@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test WebSocket</title>
+</head>
+<body>
+
+<h1>Connexion WebSocket</h1>
+
+<!-- Zone d'affichage pour les messages -->
+<div id="messages"></div>
+
+<!-- Champ pour envoyer un message -->
+<input type="text" id="messageInput" placeholder="Tapez un message...">
+<button id="send" >Envoyer</button>
+
+<script>
+    // Créer une nouvelle connexion WebSocket
+    const socket = new WebSocket("ws://localhost:9001/ws?idpersonne=1");
+
+    // Lorsque la connexion est ouverte
+    socket.onopen = function(event) {
+        console.log("Connexion WebSocket établie !");
+        document.getElementById("messages").innerHTML += "<p>Connexion établie !</p>";
+    };
+
+    // Lorsqu'un message est reçu
+    socket.onmessage = function(event) {
+        console.log("Message reçu du serveur : ", event.data);
+        document.getElementById("messages").innerHTML += "<p>Message du serveur : " + event.data + "</p>";
+    };
+
+    // Lorsqu'il y a une erreur
+    socket.onerror = function(error) {
+        console.error("Erreur WebSocket : ", error);
+        document.getElementById("messages").innerHTML += "<p>Erreur WebSocket</p>";
+    };
+
+    // Lorsque la connexion est fermée
+    socket.onclose = function(event) {
+        console.log("Connexion WebSocket fermée : ", event);
+        document.getElementById("messages").innerHTML += "<p>Connexion fermée</p>";
+    };
+
+    function sendMessage() {
+    const messageText = document.getElementById("messageInput").value;
+
+    // Créer un objet JSON avec le message et le destinataire
+    const messagePayload = {
+        from: '1',       // idpersonne de l'expéditeur
+        to: '2',        // idpersonne du destinataire
+        message: messageText       // Contenu du message
+    };
+
+    // Vérifie si la connexion WebSocket est ouverte avant d'envoyer
+    if (socket.readyState === WebSocket.OPEN) {
+        // Envoyer l'objet JSON sous forme de chaîne via WebSocket
+        socket.send(JSON.stringify(messagePayload));
+        console.log("Message envoyé : ", JSON.stringify(messagePayload));  // Log du message envoyé
+    } else {
+        console.log("WebSocket n'est pas encore prêt pour l'envoi.");
+    }
+
+    // Afficher le message dans l'interface
+    document.getElementById("messages").innerHTML += "<p>Message envoyé à " + 2 + " : " + messageText + "</p>";
+
+    // Vider le champ de texte
+    document.getElementById("messageInput").value = '';
+}
+document.getElementById("send").addEventListener("click", ()=>{
+    sendMessage()
+})
+
+
+</script>
+
+</body>
+</html>
