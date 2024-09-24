@@ -2,28 +2,28 @@ package com.SAE.Serveur.Model;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "player")
 public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long idPlayer;
     private String name;
     private TypePlayer type;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinTable(name = "id")
+    @JoinTable(name = "ProgressPlayer")
     private Progress progress;
 
     public Player() {}
 
 
     public void setId(Long id) {
-        this.id = id;
+        this.idPlayer = id;
     }
 
     public Long getId() {
-        return id;
+        return idPlayer;
     }
 
     public String getName() {

@@ -4,26 +4,26 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
+@Entity(name = "progress")
 public class Progress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long idProgress;
 
     private int maxStape;
 
-    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "progress", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Stape> stapes;
 
     public Progress() {}
 
     public long getId() {
-        return id;
+        return idProgress;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.idProgress = id;
     }
 
     public int getMaxStape() {

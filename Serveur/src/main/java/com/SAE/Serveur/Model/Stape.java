@@ -2,26 +2,27 @@ package com.SAE.Serveur.Model;
 
 import jakarta.persistence.*;
 
+@Entity(name = "stape")
 public class Stape {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int idStape;
 
     private String QuestType;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idProgress")
     private Progress progress;
 
     public Stape() {}
 
     public int getId() {
-        return id;
+        return idStape;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.idStape = id;
     }
 
     public String getQuestType() {
