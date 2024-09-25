@@ -12,6 +12,19 @@
             android:icon="@mipmap/ic_launcher"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/Theme.TheRift"/>
+            android:theme="@style/Theme.TheRift">
+
+
+        <activity
+                android:name="com.exemple.therift.Controler.MainActivity"
+                android:exported="true"
+        >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.exemple.therift.Controler.LoginActivity"/>
+    </application>
 
 </manifest>
