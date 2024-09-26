@@ -20,7 +20,7 @@
 
 
         <activity
-                android:name="main.Controler.MainActivity"
+                android:name="main.View.LoadingActivity"
                 android:exported="true"
         >
             <intent-filter>
@@ -28,7 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="main.Controler.LoginActivity"/>
+        <activity android:name="main.View.LoginActivity"/>
+        <activity android:name="main.View.MainActivity"/>
     </application>
 
 </manifest>
