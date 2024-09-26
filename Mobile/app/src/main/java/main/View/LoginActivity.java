@@ -1,5 +1,6 @@
-package main.Controler;
+package main.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,5 +14,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.binding = LoginActivityBinding.inflate(getLayoutInflater());
         this.setContentView(this.binding.getRoot());
+
+        this.binding.titleReady.setOnClickListener((v) -> {startActivity(new Intent(LoginActivity.this, MainActivity.class));} );
     }
 }

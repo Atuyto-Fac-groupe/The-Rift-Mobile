@@ -1,4 +1,4 @@
-package main.Controler;
+package main.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.therift.databinding.LoadingActivityBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class LoadingActivity extends AppCompatActivity {
 
     private LoadingActivityBinding binding;
     @Override
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         Thread.sleep(1000);
 
-                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        Intent intent = new Intent(LoadingActivity.this, LoginActivity.class);
                         startActivity(intent);
 
                     } catch (InterruptedException e) {
