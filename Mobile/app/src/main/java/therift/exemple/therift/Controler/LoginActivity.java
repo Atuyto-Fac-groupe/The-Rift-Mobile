@@ -1,4 +1,4 @@
-package com.exemple.therift.Controler;
+package therift.exemple.therift.Controler;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;

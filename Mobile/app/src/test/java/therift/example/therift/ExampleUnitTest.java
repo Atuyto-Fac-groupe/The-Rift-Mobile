@@ -1,4 +1,4 @@
-package com.example.therift;
+package therift.example.therift;
 
 import org.junit.Test;
 

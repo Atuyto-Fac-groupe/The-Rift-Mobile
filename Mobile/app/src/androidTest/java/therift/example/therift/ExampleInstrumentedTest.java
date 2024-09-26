@@ -1,4 +1,4 @@
-package com.example.therift;
+package therift.example.therift;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;

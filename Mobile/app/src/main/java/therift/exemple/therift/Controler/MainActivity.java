@@ -1,4 +1,4 @@
-package com.exemple.therift.Controler;
+package therift.exemple.therift.Controler;
 
 import android.content.Intent;
 import android.os.Bundle;

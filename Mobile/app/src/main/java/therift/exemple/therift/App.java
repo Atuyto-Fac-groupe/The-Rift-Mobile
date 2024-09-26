@@ -1,4 +1,4 @@
-package com.exemple.therift;
+package therift.exemple.therift;
 
 import android.app.Application;
 
