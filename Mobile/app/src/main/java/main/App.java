@@ -10,7 +10,7 @@ import main.Model.SocketManager;
 
 public class App extends Application implements SocketObserver {
 
-    public static String WebSocketUrl = "ws://10.6.5.93:9001/ws?idpersonne=1";
+    public static String WebSocketUrl = "ws://10.6.5.93:9001/ws?idpersonne=2";
 
     public static OnSocketListener socketListener;
 
@@ -20,6 +20,7 @@ public class App extends Application implements SocketObserver {
     public void onCreate() {
         super.onCreate();
         socketListener = new OnSocketListener();
+        socketListener.addObserver(this);
         socketManager = SocketManager.getInstance(socketListener);
         socketManager.startConnection();
 
