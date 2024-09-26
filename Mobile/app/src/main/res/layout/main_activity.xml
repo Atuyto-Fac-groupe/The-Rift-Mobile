@@ -42,8 +42,8 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-    <fragment
-            android:id="@+id/fragContainer"
+    <FrameLayout
+            android:id="@+id/idFragContainer"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:name="main.View.FragmentNote"

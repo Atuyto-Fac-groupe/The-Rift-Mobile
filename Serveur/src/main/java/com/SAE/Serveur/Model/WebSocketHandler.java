@@ -1,5 +1,6 @@
 package com.SAE.Serveur.Model;
 
+import com.google.gson.Gson;
 import org.json.JSONObject;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -46,19 +47,18 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-
-        System.out.println("Message brut reçu du client : " + message.getPayload());
         JSONObject jsonMessage = new JSONObject(message.getPayload());
-        String from = jsonMessage.getString("from");
-        String to = jsonMessage.getString("to");
-        String messageText = jsonMessage.getString("message");
-
-        WebSocketSession recipientSession = this.session.get(to);
+        main.Model.Message m = new main.Model.Message ();
+        m.setFrom(jsonMessage.getString("from"));
+        m.setTo(jsonMessage.getString("to"));
+        m.setMessage(jsonMessage.getString("message"));
+        WebSocketSession recipientSession = this.session.get(m.getTo());
 
         if (recipientSession != null && recipientSession.isOpen()) {
-            recipientSession.sendMessage(new TextMessage("Message de " + from + " : " + messageText));
-        } else {
-            System.out.println("Le destinataire " + to + " n'est pas connecté.");
+            Gson gson = new Gson();
+            String jsonMessageToSend = gson.toJson(m);
+            recipientSession.sendMessage(new TextMessage(jsonMessageToSend));
+
         }
     }
 
