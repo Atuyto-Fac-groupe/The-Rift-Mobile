@@ -39,4 +39,10 @@ public class SocketManager {
             client.dispatcher().executorService().shutdown();
         }
     }
+
+    public void sendMessage(String message) {
+        if (webSocket != null) {
+            webSocket.send(message);
+        }
+    }
 }

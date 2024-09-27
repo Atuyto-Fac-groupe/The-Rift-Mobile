@@ -7,17 +7,32 @@
 >
     <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="0dp"
+            android:id="@+id/idSvMain"
+            android:layout_above="@+id/idEtMessage"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+    >
         <LinearLayout
                 android:id="@+id/liMessages"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="25dp"
-                >
+        >
 
         </LinearLayout>
     </ScrollView>
+
+    <EditText
+            android:id="@+id/idEtMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_send"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            android:layout_alignParentBottom="true"
+            />
 
 </RelativeLayout>
