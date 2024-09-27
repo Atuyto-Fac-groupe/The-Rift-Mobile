@@ -48,10 +48,7 @@ public class MessageControler implements View.OnTouchListener {
     private void senMessage() {
         String message = editText.getText().toString();
         if (!message.isEmpty()) {
-            Message m = new Message();
-            m.setMessage(message);
-            m.setFrom("2");
-            m.setTo("1");
+            Message m = new Message(message, "2", "1");
             m.setSee(true);
             String json = gson.toJson(m);
             App.socketManager.sendMessage(json);
