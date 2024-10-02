@@ -1,17 +1,28 @@
-package com.example.heatmapper;
+package com.example.heatmapper.Model;
 
-public class Signaux {
+public class Router {
 
 
     private String SSID;
     private String BSSID;
     private int level;
+    private int X;
+    private int Y;
+    private double n;
 
-    public Signaux(String SSID, String BSSID, int level) {
+    public Router(String SSID, String BSSID, int level, int X, int Y) {
 
         this.SSID = SSID;
         this.BSSID = BSSID;
         this.level = level;
+        this.X = X;
+        this.Y = Y;
+        this.n = 2.0;
+
+    }
+
+    public double getN() {
+        return n;
     }
 
     public int getLevel() {
