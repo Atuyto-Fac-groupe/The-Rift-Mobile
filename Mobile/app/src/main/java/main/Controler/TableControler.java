@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.therift.R;
 import com.google.android.material.tabs.TabLayout;
+import main.View.FragmentHistoire;
 import main.View.FragmentMessage;
 import main.View.FragmentNote;
 
@@ -27,7 +28,10 @@ public class TableControler implements TabLayout.OnTabSelectedListener {
 
         switch (position) {
             case 0:
-
+                this.activity.getSupportFragmentManager().beginTransaction()
+                        .replace(fragment.getId(), new FragmentHistoire())
+                        .addToBackStack(fragment.getTransitionName())
+                        .commit();
                 break;
             case 1:
                 this.activity.getSupportFragmentManager().beginTransaction()
