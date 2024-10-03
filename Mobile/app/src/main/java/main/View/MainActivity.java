@@ -50,6 +50,19 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
         this.tableControler = new TableControler(this.binding.idFragContainer, this);
         this.binding.tabLayout.addOnTabSelectedListener( this.tableControler);
 
+        this.binding.carto.setOnClickListener((view -> {
+            this.getSupportFragmentManager().beginTransaction()
+                    .replace(this.binding.idFragContainer.getId(), new FragmentCartographie())
+                    .addToBackStack(this.binding.idFragContainer.getTransitionName())
+                    .commit();
+        }));
+
+        this.binding.test.setOnClickListener((view -> {
+            this.getSupportFragmentManager().beginTransaction()
+                    .replace(this.binding.idFragContainer.getId(), new FragmentTest())
+                    .addToBackStack(this.binding.idFragContainer.getTransitionName())
+                    .commit();
+        }));
     }
 
 

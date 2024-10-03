@@ -19,6 +19,9 @@ public class App extends Application implements SocketObserver {
 
     public static Player player;
 
+    public static final int ROW = 5;
+    public static final int COL = 5;
+
     @Override
     public void onCreate() {
         super.onCreate();
