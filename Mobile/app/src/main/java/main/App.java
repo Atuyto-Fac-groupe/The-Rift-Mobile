@@ -17,6 +17,11 @@ public class App extends Application implements SocketObserver {
 
     public static SocketManager socketManager;
 
+    public static final int ROW = 10;
+    public static final int COL = 10;
+
+
+
     public static Player player;
 
     @Override
