@@ -478,15 +478,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 115418927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e28a24ac4b29d4aaa76877221f326b, type: 3}
+  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   associatedColliderNames:
   - P4D
   - P6G
-  - P2B
   - P8H
-  isMerged: 0
+  - P2B
 --- !u!1 &147708866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,14 +1236,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 431001809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e28a24ac4b29d4aaa76877221f326b, type: 3}
+  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   associatedColliderNames:
   - P5D
-  - P9H
   - P3B
-  isMerged: 0
+  - P9H
 --- !u!1001 &437056971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2301,13 +2299,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 796524614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e28a24ac4b29d4aaa76877221f326b, type: 3}
+  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   associatedColliderNames:
   - P2G
   - P4H
-  isMerged: 0
 --- !u!65 &796524625
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2827,14 +2824,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 955128318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e28a24ac4b29d4aaa76877221f326b, type: 3}
+  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   associatedColliderNames:
-  - P5B
   - P7D
   - P9G
-  isMerged: 0
+  - P5B
 --- !u!1 &1083959986
 GameObject:
   m_ObjectHideFlags: 0
@@ -3084,13 +3080,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1083959986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e28a24ac4b29d4aaa76877221f326b, type: 3}
+  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   associatedColliderNames:
   - P8D
   - P6B
-  isMerged: 0
 --- !u!1 &1090857668
 GameObject:
   m_ObjectHideFlags: 0
@@ -4245,13 +4240,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1252502849}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e28a24ac4b29d4aaa76877221f326b, type: 3}
+  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   associatedColliderNames:
-  - P6H
   - P2D
-  isMerged: 0
+  - P6H
 --- !u!4 &1275022772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6305737498139461415, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
@@ -4601,14 +4595,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1317601252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e28a24ac4b29d4aaa76877221f326b, type: 3}
+  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   associatedColliderNames:
   - P1B
-  - P7H
   - P5G
-  isMerged: 0
+  - P7H
 --- !u!1 &1330580042
 GameObject:
   m_ObjectHideFlags: 0
@@ -5283,14 +5276,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1460439772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e28a24ac4b29d4aaa76877221f326b, type: 3}
+  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   associatedColliderNames:
   - P1D
   - P3G
   - P5H
-  isMerged: 0
 --- !u!4 &1553828171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7415146172554156808, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
@@ -7106,13 +7098,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2125414548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e28a24ac4b29d4aaa76877221f326b, type: 3}
+  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   associatedColliderNames:
   - P4B
   - P8G
-  isMerged: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
