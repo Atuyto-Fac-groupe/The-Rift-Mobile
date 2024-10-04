@@ -1,7 +1,9 @@
 package main.Model.BDD;
 
-import main.Model.GridCell;
-import main.Model.GridMap;
+import main.Model.BDD.Cartography.*;
+import main.Model.cartography.Calibration;
+import main.Model.cartography.GridCell;
+import main.Model.cartography.GridMap;
 import main.Model.Notes;
 
 import android.content.Context;
@@ -9,12 +11,11 @@ import androidx.room.Database;
 
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
-import main.Model.Router;
+import main.Model.cartography.Router;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {Notes.class, Router.class, GridMap.class, GridCell.class}, version = 3, exportSchema = false)
+@Database(entities = {Notes.class, Router.class, GridMap.class, GridCell.class, Calibration.class, CalibrationRouterCrossRef.class, GridCellCrossRef.class}, version = 4, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
@@ -22,6 +23,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract RouterDao routerDao();
     public abstract GridMapDao gridMapDao();
     public abstract GridCellDao gridCellDao();
+    public abstract CalibrationDao calibrationDao();
 
 
 

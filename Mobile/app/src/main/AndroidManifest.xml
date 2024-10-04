@@ -33,6 +33,7 @@
         </activity>
         <activity android:name="main.View.LoginActivity"/>
         <activity android:name="main.View.MainActivity"/>
+        <activity android:name="main.View.Cartography.CartographyActivity"/>
     </application>
 
 </manifest>

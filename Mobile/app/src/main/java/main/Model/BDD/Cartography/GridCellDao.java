@@ -1,7 +1,7 @@
-package main.Model.BDD;
+package main.Model.BDD.Cartography;
 
 import androidx.room.*;
-import main.Model.GridCell;
+import main.Model.cartography.GridCell;
 
 import java.util.List;
 
@@ -20,7 +20,9 @@ public interface GridCellDao {
     @Query("select * from GridCell")
     List<GridCell> getAll();
 
-    @Query("select * from GridCell where GridCell.id = :idGridCell")
+    @Query("select * from GridCell where GridCell.idGridCell = :idGridCell")
     GridCell getById(int idGridCell);
+
+
 
 }

@@ -1,29 +1,22 @@
 package main.View;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.therift.R;
 import com.example.therift.databinding.MainActivityBinding;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
 import main.App;
 import main.Controler.SocketObserver;
 import main.Controler.TableControler;
 import main.Model.Message;
-import main.Model.OnSocketListener;
+import main.View.Cartography.CartographyActivity;
+import main.View.Cartography.FragmentCartographieTest;
+import main.View.Cartography.FragmentTest;
 import okhttp3.Response;
 import okhttp3.WebSocket;
-
-import java.util.List;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements SocketObserver {
 
@@ -51,10 +44,7 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
         this.binding.tabLayout.addOnTabSelectedListener( this.tableControler);
 
         this.binding.carto.setOnClickListener((view -> {
-            this.getSupportFragmentManager().beginTransaction()
-                    .replace(this.binding.idFragContainer.getId(), new FragmentCartographie())
-                    .addToBackStack(this.binding.idFragContainer.getTransitionName())
-                    .commit();
+           startActivity(new Intent(this, CartographyActivity.class));
         }));
 
         this.binding.test.setOnClickListener((view -> {

@@ -1,4 +1,4 @@
-package main.Model;
+package main.Model.cartography;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteConstraintException;
@@ -14,7 +14,7 @@ import java.util.List;
 public class GridMap {
 
     @PrimaryKey(autoGenerate = true)
-    private long id;
+    private long idGridMap;
 
     @Ignore
     private GridCell[][] grid;
@@ -24,16 +24,13 @@ public class GridMap {
 
     private String name;
 
+
+
+
     public GridMap(int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
-        grid = new GridCell[rows][cols];
 
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                grid[i][j] = new GridCell(i, j);
-            }
-        }
     }
 
     public String getName() {
@@ -44,15 +41,32 @@ public class GridMap {
         this.name = name;
     }
 
-    public long getId() {
-        return id;
+    public long getIdGridMap() {
+        return idGridMap;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdGridMap(long idGridMap) {
+        this.idGridMap = idGridMap;
     }
 
     public GridCell[][] getGrid() {
+        if (grid == null) {
+            grid = new GridCell[rows][cols];
+            if(this.idGridMap != 0){
+                List<GridCell> cells = App.appDatabase.gridMapDao().getGridMapWithGridCell(this.idGridMap).gridCells;
+                if (!cells.isEmpty()) {
+                    for (GridCell gridCell : cells) {
+                        this.grid[gridCell.getX()][gridCell.getY()] = gridCell;
+                    }
+                }
+                return grid;
+            }
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    grid[i][j] = new GridCell(i, j);
+                }
+            }
+        }
         return grid;
     }
 
@@ -84,18 +98,11 @@ public class GridMap {
     }
 
 
-    public void addWifiDataToCell(int row, int col, List<Router> wifiData) {
-        GridCell cell = getCell(row, col);
-        if (cell != null) {
-            cell.setWifiData(wifiData);
-        }
-    }
-
     public void sauvegarder(Context context) {
         AppDatabase appDatabase = AppDatabase.getInstance(context);
-        if (this.id == 0) {
+        if (this.idGridMap == 0) {
             try {
-                this.id = appDatabase.gridMapDao().insert(this);
+                this.idGridMap = appDatabase.gridMapDao().insert(this);
             } catch (SQLiteConstraintException e) {
                 appDatabase.gridMapDao().update(this);
             }
@@ -105,10 +112,19 @@ public class GridMap {
 
         for (GridCell[] gridCells : this.grid) {
             for (GridCell gridCell : gridCells) {
-                gridCell.sauvegarder(context, (int) this.id);
+                gridCell.sauvegarder((int) this.idGridMap);
             }
         }
     }
 
+    public static GridMap loadGridMapFromId(long id) {
+        GridMap gridMap = App.appDatabase.gridMapDao().getGridMap(id);
+        if (gridMap == null) {
+            return new GridMap(App.ROW, App.COL);
+        }
+        else {
+            return gridMap;
+        }
+    }
 
 }

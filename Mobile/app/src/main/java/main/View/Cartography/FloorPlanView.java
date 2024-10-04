@@ -1,4 +1,4 @@
-package main.View;
+package main.View.Cartography;
 
 import android.content.Context;
 import android.graphics.Canvas;

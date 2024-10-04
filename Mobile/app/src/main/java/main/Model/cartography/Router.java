@@ -1,4 +1,4 @@
-package main.Model;
+package main.Model.cartography;
 
 
 import android.content.Context;
@@ -10,48 +10,25 @@ import main.Model.BDD.AppDatabase;
 public class Router {
 
     @PrimaryKey(autoGenerate = true)
-    private long id;
+    private long IdRouter;
 
-    private String SSID;
     private String BSSID;
     private int level;
-    private int X;
-    private int Y;
     private double n;
 
-    public Router(String SSID, String BSSID, int level, int X, int Y) {
-
-        this.SSID = SSID;
+    public Router(String BSSID, int level) {
         this.BSSID = BSSID;
         this.level = level;
-        this.X = X;
-        this.Y = Y;
         this.n = 2.0;
 
     }
 
-    public long getId() {
-        return id;
+    public long getIdRouter() {
+        return IdRouter;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public int getX() {
-        return X;
-    }
-
-    public void setX(int x) {
-        X = x;
-    }
-
-    public int getY() {
-        return Y;
-    }
-
-    public void setY(int y) {
-        Y = y;
+    public void setIdRouter(long idRouter) {
+        this.IdRouter = idRouter;
     }
 
     public void setN(double n) {
@@ -70,13 +47,6 @@ public class Router {
         this.level = level;
     }
 
-    public String getSSID() {
-        return SSID;
-    }
-
-    public void setSSID(String SSID) {
-        this.SSID = SSID;
-    }
 
     public String getBSSID() {
         return BSSID;
@@ -89,8 +59,12 @@ public class Router {
 
     public void sauvegarder(Context context){
         AppDatabase appDatabase = AppDatabase.getInstance(context);
-        if (this.id == 0){
-            this.id = appDatabase.routerDao().insert(this);
+        if (this.IdRouter == 0){
+            try {
+                this.IdRouter = appDatabase.routerDao().insert(this);
+            } catch (Exception e) {
+                appDatabase.routerDao().update(this);
+            }
         }
         else {
             appDatabase.routerDao().update(this);

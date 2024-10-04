@@ -1,7 +1,7 @@
-package main.Model.BDD;
+package main.Model.BDD.Cartography;
 
 import androidx.room.*;
-import main.Model.Router;
+import main.Model.cartography.Router;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public interface RouterDao {
     @Query("select * from Router")
     List<Router> getAllRouter();
 
-    @Query("select * from Router where Router.id = :routerId")
+    @Query("select * from Router where Router.IdRouter = :routerId")
     Router getRouter(long routerId);
 
 }
