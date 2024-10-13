@@ -16,12 +16,17 @@ public class Calibration {
     private float x;
     private float y;
 
+
+
+    private int level;
+
     @Ignore
     private List<Router> routers;
 
-    public Calibration(float x, float y) {
+    public Calibration(float x, float y, int level) {
         this.x = x;
         this.y = y;
+        this.level = level;
     }
 
     public void setIdCalibration(long idCalibration) {
@@ -48,7 +53,13 @@ public class Calibration {
         this.y = y;
     }
 
+    public int getLevel() {
+        return level;
+    }
 
+    public void setLevel(int level) {
+        this.level = level;
+    }
     public List<Router> getRouters() {
         if (routers == null) {
             this.routers = App.appDatabase.calibrationDao().getCalibrationWithRouters(this.getIdCalibration()).routers;

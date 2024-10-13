@@ -23,4 +23,7 @@ public interface RouterDao {
     @Query("select * from Router where Router.IdRouter = :routerId")
     Router getRouter(long routerId);
 
+    @Query("select * from Router where Router.BSSID = :BSSID")
+    Router getRouter(String BSSID);
+
 }

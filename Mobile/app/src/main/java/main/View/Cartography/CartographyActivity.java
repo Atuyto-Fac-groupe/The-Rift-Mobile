@@ -11,10 +11,13 @@ import main.Controler.CartographieControler;
 
 public class CartographyActivity extends AppCompatActivity {
 
+    public CartographieActivityBinding getBinding() {
+        return binding;
+    }
+
     private CartographieActivityBinding binding;
 
     private boolean stapeOneFinished;
-    private BroadcastReceiver receiver;
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -22,7 +25,7 @@ public class CartographyActivity extends AppCompatActivity {
         this.binding = CartographieActivityBinding.inflate(getLayoutInflater());
         this.setContentView(this.binding.getRoot());
         this.stapeOneFinished = false;
-        this.receiver = new CartographieControler(this);
+        new CartographieControler(this);
 
     }
 
@@ -35,17 +38,5 @@ public class CartographyActivity extends AppCompatActivity {
         this.stapeOneFinished = stapeOneFinished;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
-        registerReceiver(this.receiver, intentFilter);
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unregisterReceiver(this.receiver);
-    }
 }

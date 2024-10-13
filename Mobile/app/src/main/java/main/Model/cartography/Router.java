@@ -3,6 +3,7 @@ package main.Model.cartography;
 
 import android.content.Context;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import main.Model.BDD.AppDatabase;
 
@@ -19,6 +20,14 @@ public class Router {
     public Router(String BSSID, int level) {
         this.BSSID = BSSID;
         this.level = level;
+        this.n = 2.0;
+
+    }
+
+    @Ignore
+    public Router(String BSSID) {
+        this.BSSID = BSSID;
+        this.level = -40;
         this.n = 2.0;
 
     }
@@ -56,6 +65,12 @@ public class Router {
         this.BSSID = BSSID;
     }
 
+    public double calculateDistanceFromRSSI(int rssi) {
+        return Math.pow(10, (this.level - rssi) / (10 * this.n));
+    }
+    public double calculateDistanceFromRSSI(int rssi, int ref) {
+        return Math.pow(10, (ref - rssi) / (10 * this.n));
+    }
 
     public void sauvegarder(Context context){
         AppDatabase appDatabase = AppDatabase.getInstance(context);
@@ -69,5 +84,14 @@ public class Router {
         else {
             appDatabase.routerDao().update(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Router{" +
+                "BSSID='" + BSSID + '\'' +
+                ", level=" + level +
+                ", n=" + n +
+                '}';
     }
 }

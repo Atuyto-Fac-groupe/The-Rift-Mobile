@@ -52,7 +52,7 @@ public class GridCell {
 
     public void sauvegarder(int idGridMap){
         AppDatabase appDatabase = App.appDatabase;
-        this.idGridCell = idGridMap;
+//        this.idGridCell = idGridMap;
         if(this.idGridCell == 0){
             try {
                 this.idGridCell = appDatabase.gridCellDao().insert(this);
