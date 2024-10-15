@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,23 +12,24 @@ import androidx.fragment.app.Fragment;
 
 import com.example.therift.databinding.FragmentNoteBinding;
 
-import main.Model.BDD.AppDatabase;
+import io.objectbox.Box;
+import main.Model.BDD.ObjectBox;
 import main.Model.Notes;
+
+import java.util.Objects;
 
 public class FragmentNote extends Fragment {
 
     private FragmentNoteBinding binding;
-    private AppDatabase db;
     private Notes currentNote;
+    private Box<Notes> noteBox;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentNoteBinding.inflate(getLayoutInflater());
-        db = AppDatabase.getInstance(this.getContext());
-
         EditText noteEditText = binding.etNoteText;
-
+        noteBox = ObjectBox.get().boxFor(Notes.class);
         loadLastNote();
 
         noteEditText.setOnFocusChangeListener((v, hasFocus) -> {
@@ -63,9 +63,9 @@ public class FragmentNote extends Fragment {
 
     private void loadLastNote() {
         new Thread(() -> {
-            currentNote = db.notesDao().getNoteById(1);
+            currentNote = noteBox.get(1);
             if (currentNote != null) {
-                getActivity().runOnUiThread(() -> binding.etNoteText.setText(currentNote.getContainerText()));
+                Objects.requireNonNull(getActivity()).runOnUiThread(() -> binding.etNoteText.setText(currentNote.getContainerText()));
             }
         }).start();
     }
@@ -77,10 +77,10 @@ public class FragmentNote extends Fragment {
             if (currentNote == null) {
                 currentNote = new Notes();
                 currentNote.setContainerText(noteText);
-                db.notesDao().insertNote(currentNote);
+                noteBox.put(Objects.requireNonNull(currentNote));
             } else {
                 currentNote.setContainerText(noteText);
-                db.notesDao().updateNotes(currentNote);
+                noteBox.put(Objects.requireNonNull(currentNote));
             }
         }).start();
     }

@@ -1,8 +1,9 @@
 package main;
 
 import android.app.Application;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import main.Model.BDD.AppDatabase;
+import main.Model.BDD.ObjectBox;
 import main.Model.Player;
 import okhttp3.Response;
 import okhttp3.WebSocket;
@@ -23,7 +24,6 @@ public class App extends Application implements SocketObserver {
     public static final int ROW = 5;
     public static final int COL = 5;
 
-    public static AppDatabase appDatabase;
 
     @Override
     public void onCreate() {
@@ -33,9 +33,11 @@ public class App extends Application implements SocketObserver {
         socketManager = SocketManager.getInstance(socketListener);
         socketManager.startConnection();
         player = new Player();
-        appDatabase = AppDatabase.getInstance(this);
+        ObjectBox.init(this);
 
     }
+
+
 
     @Override
     public void onOpen(WebSocket webSocket, Response response) {

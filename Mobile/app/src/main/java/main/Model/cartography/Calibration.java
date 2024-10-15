@@ -1,73 +1,80 @@
 package main.Model.cartography;
 
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
-import main.App;
 
-import java.util.List;
+import io.objectbox.annotation.Backlink;
+import io.objectbox.annotation.Entity;
+import io.objectbox.annotation.Id;
+import io.objectbox.relation.ToOne;
 
 @Entity
 public class Calibration {
 
-    @PrimaryKey(autoGenerate = true)
-    private long IdCalibration;
+    @Id
+    private Long id;
 
-    private float x;
-    private float y;
+    private double x;
+    private double y;
 
 
+    private ToOne<Router> router;
 
-    private int level;
 
-    @Ignore
-    private List<Router> routers;
+    public Calibration() {
+    }
 
-    public Calibration(float x, float y, int level) {
+
+    public Calibration(Long routerId, double y, double x, Long id) {
+        this.id = routerId;
+        this.y = y;
+        this.x = x;
+        this.id = id;
+    }
+
+    public Calibration(double x, double y, Router router) {
         this.x = x;
         this.y = y;
-        this.level = level;
+        this.router.setTargetId(router.getId());
     }
 
-    public void setIdCalibration(long idCalibration) {
-        this.IdCalibration = idCalibration;
+    public Long getId() {
+        return id;
     }
 
-    public long getIdCalibration() {
-        return IdCalibration;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public float getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(float x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public float getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(float y) {
+    public void setY(double y) {
         this.y = y;
     }
 
-    public int getLevel() {
-        return level;
+    public Long getRouterId() {
+        return id;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
-    public List<Router> getRouters() {
-        if (routers == null) {
-            this.routers = App.appDatabase.calibrationDao().getCalibrationWithRouters(this.getIdCalibration()).routers;
-        }
-        return routers;
+    public void setRouterId(Long routerId) {
+        this.id = routerId;
     }
 
-    public void setRouters(List<Router> routers) {
-        this.routers = routers;
+    public ToOne<Router> getRouter() {
+        return router;
     }
+
+    public void setRouter(ToOne<Router> router) {
+        this.router = router;
+    }
+
+
 }

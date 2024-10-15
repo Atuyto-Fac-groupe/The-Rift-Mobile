@@ -1,17 +1,25 @@
 package main.Model;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
-@Entity(tableName = "notes")
+import io.objectbox.annotation.Entity;
+import io.objectbox.annotation.Id;
+
+@Entity()
 public class Notes {
 
-    @PrimaryKey(autoGenerate = true)
+    @Id
     private Long idNotes;
 
-    @ColumnInfo(name = "containerText")
     private String containerText;
+
+
+    public Notes(Long idNotes, String containerText) {
+        this.idNotes = idNotes;
+        this.containerText = containerText;
+    }
+    public Notes() {
+        this.containerText = "";
+    }
 
     public Long getIdNotes() {
         return idNotes;
@@ -29,7 +37,5 @@ public class Notes {
         this.containerText = containerText;
     }
 
-    public Notes() {
-        this.containerText = "";
-    }
+
 }

@@ -13,8 +13,6 @@ import main.Controler.SocketObserver;
 import main.Controler.TableControler;
 import main.Model.Message;
 import main.View.Cartography.CartographyActivity;
-import main.View.Cartography.FragmentCartographieTest;
-import main.View.Cartography.FragmentTest;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 
@@ -48,10 +46,7 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
         }));
 
         this.binding.test.setOnClickListener((view -> {
-            this.getSupportFragmentManager().beginTransaction()
-                    .replace(this.binding.idFragContainer.getId(), new FragmentTest())
-                    .addToBackStack(this.binding.idFragContainer.getTransitionName())
-                    .commit();
+
         }));
     }
 

@@ -29,14 +29,4 @@ public class CartographyActivity extends AppCompatActivity {
 
     }
 
-
-    public boolean isStapeOneFinished() {
-        return stapeOneFinished;
-    }
-
-    public void setStapeOneFinished(boolean stapeOneFinished) {
-        this.stapeOneFinished = stapeOneFinished;
-    }
-
-
 }

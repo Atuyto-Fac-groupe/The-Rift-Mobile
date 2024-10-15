@@ -1,130 +1,88 @@
 package main.Model.cartography;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteConstraintException;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
-import main.App;
-import main.Model.BDD.AppDatabase;
+import io.objectbox.Box;
+import io.objectbox.annotation.Entity;
+import io.objectbox.annotation.Id;
+import io.objectbox.annotation.Transient;
+import main.Model.BDD.ObjectBox;
 
 import java.util.List;
 
 @Entity
 public class GridMap {
 
-    @PrimaryKey(autoGenerate = true)
-    private long idGridMap;
 
-    @Ignore
-    private GridCell[][] grid;
+    @Id
+    private long id;
 
-    private int rows;
-    private int cols;
+    private int nbRow;
+    private int nbCol;
 
-    private String name;
+    @Transient
+    private Cell[][] gridCells;
 
+    public GridMap(long id, int nbRow, int nbCol) {
+        this.id = id;
+        this.nbRow = nbRow;
+        this.nbCol = nbCol;
+        this.gridCells = new Cell[nbRow][nbCol];
+    }
 
-
-
-    public GridMap(int rows, int cols) {
-        this.rows = rows;
-        this.cols = cols;
+    public GridMap(int nbRow, int nbCol) {
+        this.nbRow = nbRow;
+        this.nbCol = nbCol;
+        this.gridCells = new Cell[nbRow][nbCol];
 
     }
 
-    public String getName() {
-        return name;
+    public long getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public long getIdGridMap() {
-        return idGridMap;
+    public int getNbRow() {
+        return nbRow;
     }
 
-    public void setIdGridMap(long idGridMap) {
-        this.idGridMap = idGridMap;
+    public void setNbRow(int nbRow) {
+        this.nbRow = nbRow;
     }
 
-    public GridCell[][] getGrid() {
-        if (grid == null) {
-            grid = new GridCell[rows][cols];
-            if(this.idGridMap != 0){
-                List<GridCell> cells = App.appDatabase.gridMapDao().getGridMapWithGridCell(this.idGridMap).gridCells;
-                if (!cells.isEmpty()) {
-                    for (GridCell gridCell : cells) {
-                        this.grid[gridCell.getX()][gridCell.getY()] = gridCell;
+    public int getNbCol() {
+        return nbCol;
+    }
+
+    public void setNbCol(int nbCol) {
+        this.nbCol = nbCol;
+    }
+
+    public Cell[][] getGridCells() {
+        Box<Cell> cellBox = ObjectBox.get().boxFor(Cell.class);
+        List<Cell> cells = cellBox.query().equal(Cell_.gridpMapId, this.id).build().find();
+        for (Cell cell : cells) {
+            gridCells[cell.getRow()][cell.getCol()] = cell;
+        }
+        return gridCells;
+    }
+
+    public void save(){
+        Box<GridMap> gridMapBox = ObjectBox.get().boxFor(GridMap.class);
+        Box<Cell> cellBox = ObjectBox.get().boxFor(Cell.class);
+        gridMapBox.put(this);
+        for (Cell[] cells : gridCells) {
+            for (Cell cell : cells) {
+                if (cell != null){
+                    Cell newCell = cellBox.query().equal(Cell_.row, cell.getRow()).equal(Cell_.col, cell.getCol()).build().findFirst();
+                    if (newCell == null) {
+                        cellBox.put(cell);
                     }
                 }
-                return grid;
-            }
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < cols; j++) {
-                    grid[i][j] = new GridCell(i, j);
-                }
-            }
-        }
-        return grid;
-    }
-
-    public void setGrid(GridCell[][] grid) {
-        this.grid = grid;
-    }
-
-    public int getRows() {
-        return rows;
-    }
-
-    public void setRows(int rows) {
-        this.rows = rows;
-    }
-
-    public int getCols() {
-        return cols;
-    }
-
-    public void setCols(int cols) {
-        this.cols = cols;
-    }
-
-    public GridCell getCell(int row, int col) {
-        if (row >= 0 && row < rows && col >= 0 && col < cols) {
-            return grid[row][col];
-        }
-        return null;
-    }
-
-
-    public void sauvegarder(Context context) {
-        AppDatabase appDatabase = AppDatabase.getInstance(context);
-        if (this.idGridMap == 0) {
-            try {
-                this.idGridMap = appDatabase.gridMapDao().insert(this);
-            } catch (SQLiteConstraintException e) {
-                appDatabase.gridMapDao().update(this);
-            }
-        } else {
-            appDatabase.gridMapDao().update(this);
-        }
-
-        for (GridCell[] gridCells : this.grid) {
-            for (GridCell gridCell : gridCells) {
-                gridCell.sauvegarder((int) this.idGridMap);
             }
         }
     }
 
-    public static GridMap loadGridMapFromId(long id) {
-        GridMap gridMap = App.appDatabase.gridMapDao().getGridMap(id);
-        if (gridMap == null) {
-            return new GridMap(App.ROW, App.COL);
-        }
-        else {
-            return gridMap;
-        }
-    }
 
 }
