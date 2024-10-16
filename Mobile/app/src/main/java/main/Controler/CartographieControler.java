@@ -75,26 +75,35 @@ public class CartographieControler implements View.OnTouchListener, View.OnClick
                     .sorted((r1, r2) -> Integer.compare(r2.level, r1.level))
                     .limit(3)
                     .collect(Collectors.toList());
-            topTreeRouterFromScan.forEach(s -> tmpRouter.add(new Router(-40, s.BSSID)));
-            tmpRouter.forEach(s -> {
+            topTreeRouterFromScan.forEach(s -> tmpRouter.add(new Router(s.level, s.BSSID)));
+
+            for (Router s : tmpRouter) {
                 Router router = Router.getRouterFromBssid(s.getBssid());
-                Calibration newPoint;
+                int oldLevel = s.getLevel();
+//                for (Router router1 : this.topRouter) {
+//                    if (router1.getBssid().equals(s.getBssid())) {
+//                        added = true;
+//                        break;
+//                    }
+//                }
+
                 if (router == null) {
                     long id = routerBox.put(s);
                     s.setId(id);
                     this.pointListe.put(s, new double[]{x, y});
+                    s.setLevel(oldLevel);
+                    topRouter.add(s);
+                } else {
+                    this.pointListe.put(router, new double[]{x, y});
+                    router.setLevel(oldLevel);
+                    topRouter.add(router);
                 }
-                else this.pointListe.put(router, new double[]{x, y});
 
-//                if(this.topRouter.isEmpty()){
-//                    topRouter.add(s);
-//                }
-//                for (Router router1 : this.topRouter) {
-//                    if (!router1.getBssid().equals(s.getBssid())) {
-//                        topRouter.add(s);
-//                    }
-//                }
-            });
+            }
+
+
+
+
 //            coordinatesCell = Cell.convertToGrid(x, y, this.gridImageView.getWidth(), this.gridImageView.getHeight(), App.ROW, App.COL);
 //            this.gridMap.getGridCells()[coordinatesCell[0]][coordinatesCell[1]] = new Cell(coordinatesCell[0], coordinatesCell[1]);
 //            this.gridMap.save();
@@ -106,23 +115,28 @@ public class CartographieControler implements View.OnTouchListener, View.OnClick
 
     @Override
     public void onClick(View view) {
+        List<Router> tmpRouter = new ArrayList<>();
         for (Router router : this.topRouter) {
             if (router.getX() != 0 && router.getY() != 0) continue;
-            calculatePositionRouter(router);
+            if(!tmpRouter.contains(router)) {
+                calculatePositionRouter(router);
+                tmpRouter.add(router);
+            }
         }
     }
 
     private void calculatePositionRouter(Router router) {
         List<double[]> topPoint = new ArrayList<>();
         List<Double> topDistance = new ArrayList<>();
-        Calibration calibration;
         int cpt = 0;
         for (Router r : this.topRouter) {
             if(cpt < 3 && r.getBssid().equals(router.getBssid())) {
-                topPoint.add(pointListe.get(r));
+                double[] coordinate = this.pointListe.get(r);
+                topPoint.add(coordinate);
                 topDistance.add(Router.getDistanceFromRssi(r.getLevel(), -40));
+                cpt++;
             }
-            cpt++;
+
         }
         double x1 = topPoint.get(0)[0];
         double y1 = topPoint.get(0)[1];

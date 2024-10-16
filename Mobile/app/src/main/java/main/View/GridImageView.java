@@ -20,7 +20,8 @@ public class GridImageView extends ImageView {
     private int rows = App.ROW;
     private int cols = App.COL;
     private List<PointF> wifiMarkers = new ArrayList<>();
-
+    private float playerX;
+    private float playerY;
 
     public GridImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -58,10 +59,23 @@ public class GridImageView extends ImageView {
         for (PointF marker : wifiMarkers) {
             canvas.drawCircle(marker.x, marker.y, 10, paint);
         }
+
+        if (playerY != 0 && playerX != 0) {
+            Paint paint2 = new Paint();
+            paint2.setColor(Color.BLUE);
+            canvas.drawCircle(playerX, playerY, 40, paint);
+        }
+
     }
 
     public void addWifiMarker(float x, float y) {
         wifiMarkers.add(new PointF(x, y));
+        invalidate();
+    }
+
+    public void movePlayer(float x, float y) {
+        playerX = x;
+        playerY = y;
         invalidate();
     }
 }

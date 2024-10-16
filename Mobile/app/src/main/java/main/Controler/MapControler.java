@@ -27,13 +27,13 @@ public class MapControler {
     private GridImageView gridImageView;
     private Context context;
     private List<Router> routersScan;
-    private HashMap<Router, Calibration> calibrations;
+    private List<Router> calibrations;
 
     public MapControler(GridImageView gridImageView, Context context) {
         this.gridImageView = gridImageView;
         this.context = context;
         this.wifiManager = (WifiManager) context.getSystemService(WIFI_SERVICE);
-        this.calibrations = new HashMap<>();
+        this.calibrations = new ArrayList<>();
         this.wifiManager.startScan();
         this.routersScan = new ArrayList<>();
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -58,27 +58,25 @@ public class MapControler {
         }
 
         for (Router router : this.routersScan) {
-            List<Calibration> calibration = Calibration.getCalibrationsFomRouter(router);
-            Calibration pointCalibration;
-            if (!calibration.isEmpty()) {
-                pointCalibration = calibration.stream()
-                        .sorted((r1, r2) -> Integer.compare(r2.getRouter().getTarget().getLevel(), r1.getRouter().getTarget().getLevel()))
-                        .collect(Collectors.toList())
-                        .get(0);
-                this.calibrations.put(router, pointCalibration);
+            Router routerBdd = Router.getRouterFromBssid(router.getBssid());
+            if (routerBdd != null) {
+                this.calibrations.add(router);
+            }
+            if (this.calibrations.size() == 3) {
+                break;
             }
         }
 
-        List<Calibration> calibrationsList = new ArrayList<>(calibrations.values());
-        Calibration c1 = calibrationsList.get(0);
-        Calibration c2 = calibrationsList.get(1);
-        Calibration c3 = calibrationsList.get(2);
+        Router c1 = calibrations.get(0);
+        Router c2 = calibrations.get(1);
+        Router c3 = calibrations.get(2);
         double d1 = Router.getDistanceFromRssi(this.routersScan.get(0).getLevel(), -40);
         double d2 = Router.getDistanceFromRssi(this.routersScan.get(1).getLevel(), -40);
         double d3 = Router.getDistanceFromRssi(this.routersScan.get(2).getLevel(), -40);
 
-        double [] coordoninate = Calibration.triangulate(c1.getX(), c1.getY(), c2.getX(), c2.getY(), c3.getX(), c3.getY(), d1, d2, d3);
+        double[] coordoninate = Calibration.triangulate(c1.getX(), c1.getY(), c2.getX(), c2.getY(), c3.getX(), c3.getY(), d1, d2, d3);
 
+        this.gridImageView.movePlayer((float) coordoninate[0], (float)  coordoninate[1]);
         System.out.println("test");
 
 
