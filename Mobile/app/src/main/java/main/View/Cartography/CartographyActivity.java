@@ -16,6 +16,7 @@ public class CartographyActivity extends AppCompatActivity {
     }
 
     private CartographieActivityBinding binding;
+    private CartographieControler controler;
 
     private boolean stapeOneFinished;
 
@@ -25,8 +26,8 @@ public class CartographyActivity extends AppCompatActivity {
         this.binding = CartographieActivityBinding.inflate(getLayoutInflater());
         this.setContentView(this.binding.getRoot());
         this.stapeOneFinished = false;
-        new CartographieControler(this);
-
+        this.controler = new CartographieControler(this);
+        this.binding.button.setOnClickListener(this.controler);
     }
 
 }

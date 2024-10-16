@@ -13,6 +13,7 @@ import main.Controler.SocketObserver;
 import main.Controler.TableControler;
 import main.Model.Message;
 import main.View.Cartography.CartographyActivity;
+import main.View.Cartography.MapFragment;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
         }));
 
         this.binding.test.setOnClickListener((view -> {
-
+            startActivity(new Intent(this, MapFragment.class));
         }));
     }
 

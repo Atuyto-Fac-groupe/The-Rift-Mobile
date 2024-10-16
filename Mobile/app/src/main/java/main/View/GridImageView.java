@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import main.App;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +17,8 @@ import java.util.List;
 public class GridImageView extends ImageView {
 
     private Paint paint;
-    private int rows = 50;
-    private int cols = 50;
+    private int rows = App.ROW;
+    private int cols = App.COL;
     private List<PointF> wifiMarkers = new ArrayList<>();
 
 

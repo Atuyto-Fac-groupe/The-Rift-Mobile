@@ -21,6 +21,9 @@ public class Router {
 
     private int level;
 
+    private double x;
+    private double y;
+
     @Backlink(to = "router")
     private ToMany<Calibration> calibrations;
 
@@ -52,6 +55,21 @@ public class Router {
         return level;
     }
 
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
 
     public void setLevel(int level) {
         this.level = level;

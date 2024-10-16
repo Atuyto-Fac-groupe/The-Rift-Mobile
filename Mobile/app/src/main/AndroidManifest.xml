@@ -36,6 +36,7 @@
         <activity android:name="main.View.LoginActivity"/>
         <activity android:name="main.View.MainActivity"/>
         <activity android:name="main.View.Cartography.CartographyActivity"/>
+        <activity android:name="main.View.Cartography.MapFragment"/>
     </application>
 
 </manifest>
