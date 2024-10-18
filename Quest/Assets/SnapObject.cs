@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 public class SnapObject : MonoBehaviour
 {
-    public List<Transform> snapZones; // Liste des zones de snap
-    public List<Transform> puzzlePieces; // Liste des pièces du puzzle
-    public Transform plateau;
-    public GameObject plateauTermine;
+    public List<Transform> snapZones; 
+    public List<Transform> puzzlePieces; 
+    public Transform puzzleBase;
+    public GameObject puzzleBaseDone;
     private bool isSnapped = false;
     private Transform currentSnapZone;
 
@@ -14,7 +14,7 @@ public class SnapObject : MonoBehaviour
     {
         if (isSnapped)
         {
-            // Si l'objet est déjà snappé, le maintenir en place
+            // Si l'objet est déjà snappé le maintenir en place
             transform.position = currentSnapZone.position;
             transform.rotation = currentSnapZone.rotation;
         }
@@ -24,7 +24,7 @@ public class SnapObject : MonoBehaviour
     {
         if (other.CompareTag("SnapZone") && !isSnapped)
         {
-            // Lorsque l'objet entre dans une zone de snap
+            // L'objet entre dans une zone de snap
             Transform closestSnapZone = GetClosestSnapZone(other.transform);
             if (closestSnapZone != null)
             {
@@ -39,7 +39,7 @@ public class SnapObject : MonoBehaviour
     {
         if (other.CompareTag("SnapZone") && isSnapped && other.transform == currentSnapZone)
         {
-            // Lorsque l'objet sort de la zone de snap actuelle
+            // L'objet sort de la zone de snap
             isSnapped = false;
             currentSnapZone = null;
         }
@@ -79,7 +79,7 @@ public class SnapObject : MonoBehaviour
 
         if (allCorrect)
         {
-            // Si toutes les pièces sont à leur bonne place, faire disparaître le plateau
+            // Si toutes les pièces sont à leur place faire disparaître le plateau
             DisappearPuzzle();
         }
     }
@@ -87,11 +87,11 @@ public class SnapObject : MonoBehaviour
     void DisappearPuzzle()
     {
         // Faire disparaître le plateau
-        plateau.gameObject.SetActive(false);
+        puzzleBase.gameObject.SetActive(false);
         foreach (Transform piece in puzzlePieces)
         {
             piece.gameObject.SetActive(false);
         }
-        plateauTermine.gameObject.SetActive(true);
+        puzzleBaseDone.gameObject.SetActive(true);
     }
 }

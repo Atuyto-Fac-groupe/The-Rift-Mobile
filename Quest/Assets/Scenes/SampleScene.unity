@@ -392,8 +392,8 @@ MonoBehaviour:
   - {fileID: 2125414549}
   - {fileID: 955128319}
   - {fileID: 1083959987}
-  plateau: {fileID: 607281228}
-  plateauTermine: {fileID: 2091146995}
+  puzzleBase: {fileID: 607281228}
+  puzzleBaseDone: {fileID: 2091146995}
 --- !u!114 &333004377 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11400010, guid: 4b650a383c3760f449b65ff48bccdd5f, type: 3}
@@ -596,7 +596,6 @@ GameObject:
   - component: {fileID: 431001813}
   - component: {fileID: 431001812}
   - component: {fileID: 431001811}
-  - component: {fileID: 431001819}
   - component: {fileID: 431001820}
   m_Layer: 0
   m_Name: Piece6
@@ -818,18 +817,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431001809}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &431001819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431001809}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &431001820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -862,8 +849,8 @@ MonoBehaviour:
   - {fileID: 2125414549}
   - {fileID: 955128319}
   - {fileID: 1083959987}
-  plateau: {fileID: 607281228}
-  plateauTermine: {fileID: 2091146995}
+  puzzleBase: {fileID: 607281228}
+  puzzleBaseDone: {fileID: 2091146995}
 --- !u!1 &433791061
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,7 +865,7 @@ GameObject:
   - component: {fileID: 433791069}
   - component: {fileID: 433791073}
   m_Layer: 0
-  m_Name: EmplacementPiece4
+  m_Name: PositionPiece4
   m_TagString: SnapZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1098,7 +1085,7 @@ GameObject:
   - component: {fileID: 541458062}
   - component: {fileID: 541458061}
   m_Layer: 0
-  m_Name: EmplacementPiece3
+  m_Name: PositionPiece3
   m_TagString: SnapZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1368,7 +1355,7 @@ GameObject:
   - component: {fileID: 607281225}
   - component: {fileID: 607281229}
   m_Layer: 0
-  m_Name: Plateau
+  m_Name: Base
   m_TagString: Plateau
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1510,7 +1497,7 @@ GameObject:
   - component: {fileID: 655404085}
   - component: {fileID: 655404084}
   m_Layer: 0
-  m_Name: EmplacementPiece1
+  m_Name: PositionPiece1
   m_TagString: SnapZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1643,7 +1630,7 @@ GameObject:
   - component: {fileID: 682540557}
   - component: {fileID: 682540556}
   m_Layer: 0
-  m_Name: EmplacementPiece7
+  m_Name: PositionPiece7
   m_TagString: SnapZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2216,8 +2203,8 @@ MonoBehaviour:
   - {fileID: 2125414549}
   - {fileID: 955128319}
   - {fileID: 1083959987}
-  plateau: {fileID: 607281228}
-  plateauTermine: {fileID: 2091146995}
+  puzzleBase: {fileID: 607281228}
+  puzzleBaseDone: {fileID: 2091146995}
 --- !u!1001 &837190339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2378,7 +2365,6 @@ GameObject:
   - component: {fileID: 955128322}
   - component: {fileID: 955128321}
   - component: {fileID: 955128320}
-  - component: {fileID: 955128328}
   - component: {fileID: 955128329}
   m_Layer: 0
   m_Name: Piece8
@@ -2600,18 +2586,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955128318}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &955128328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955128318}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &955128329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2644,8 +2618,8 @@ MonoBehaviour:
   - {fileID: 2125414549}
   - {fileID: 955128319}
   - {fileID: 1083959987}
-  plateau: {fileID: 607281228}
-  plateauTermine: {fileID: 2091146995}
+  puzzleBase: {fileID: 607281228}
+  puzzleBaseDone: {fileID: 2091146995}
 --- !u!1 &1083959986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2916,8 +2890,8 @@ MonoBehaviour:
   - {fileID: 2125414549}
   - {fileID: 955128319}
   - {fileID: 1083959987}
-  plateau: {fileID: 607281228}
-  plateauTermine: {fileID: 2091146995}
+  puzzleBase: {fileID: 607281228}
+  puzzleBaseDone: {fileID: 2091146995}
 --- !u!1 &1090857668
 GameObject:
   m_ObjectHideFlags: 0
@@ -3324,7 +3298,7 @@ GameObject:
   - component: {fileID: 1206827541}
   - component: {fileID: 1206827540}
   m_Layer: 0
-  m_Name: EmplacementPiece6
+  m_Name: PositionPiece6
   m_TagString: SnapZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3658,7 +3632,6 @@ GameObject:
   - component: {fileID: 1252502853}
   - component: {fileID: 1252502852}
   - component: {fileID: 1252502851}
-  - component: {fileID: 1252502859}
   - component: {fileID: 1252502860}
   m_Layer: 0
   m_Name: Piece3
@@ -3880,18 +3853,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252502849}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1252502859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252502849}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1252502860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3924,8 +3885,8 @@ MonoBehaviour:
   - {fileID: 2125414549}
   - {fileID: 955128319}
   - {fileID: 1083959987}
-  plateau: {fileID: 607281228}
-  plateauTermine: {fileID: 2091146995}
+  puzzleBase: {fileID: 607281228}
+  puzzleBaseDone: {fileID: 2091146995}
 --- !u!4 &1275022772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6305737498139461415, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
@@ -4042,7 +4003,6 @@ GameObject:
   - component: {fileID: 1317601256}
   - component: {fileID: 1317601255}
   - component: {fileID: 1317601254}
-  - component: {fileID: 1317601262}
   - component: {fileID: 1317601263}
   m_Layer: 0
   m_Name: Piece4
@@ -4264,18 +4224,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317601252}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1317601262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317601252}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1317601263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4308,8 +4256,8 @@ MonoBehaviour:
   - {fileID: 2125414549}
   - {fileID: 955128319}
   - {fileID: 1083959987}
-  plateau: {fileID: 607281228}
-  plateauTermine: {fileID: 2091146995}
+  puzzleBase: {fileID: 607281228}
+  puzzleBaseDone: {fileID: 2091146995}
 --- !u!1 &1434495912
 GameObject:
   m_ObjectHideFlags: 0
@@ -4436,7 +4384,6 @@ GameObject:
   - component: {fileID: 1460439776}
   - component: {fileID: 1460439775}
   - component: {fileID: 1460439774}
-  - component: {fileID: 1460439782}
   - component: {fileID: 1460439783}
   m_Layer: 0
   m_Name: Piece2
@@ -4658,18 +4605,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460439772}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1460439782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460439772}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1460439783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4702,8 +4637,8 @@ MonoBehaviour:
   - {fileID: 2125414549}
   - {fileID: 955128319}
   - {fileID: 1083959987}
-  plateau: {fileID: 607281228}
-  plateauTermine: {fileID: 2091146995}
+  puzzleBase: {fileID: 607281228}
+  puzzleBaseDone: {fileID: 2091146995}
 --- !u!4 &1553828171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7415146172554156808, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
@@ -4751,7 +4686,7 @@ GameObject:
   - component: {fileID: 1554893554}
   - component: {fileID: 1554893553}
   m_Layer: 0
-  m_Name: EmplacementPiece5
+  m_Name: PositionPiece5
   m_TagString: SnapZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4884,7 +4819,7 @@ GameObject:
   - component: {fileID: 1588804690}
   - component: {fileID: 1588804689}
   m_Layer: 0
-  m_Name: EmplacementPiece9
+  m_Name: PositionPiece9
   m_TagString: SnapZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5080,7 +5015,7 @@ GameObject:
   - component: {fileID: 1824351854}
   - component: {fileID: 1824351853}
   m_Layer: 0
-  m_Name: EmplacementPiece8
+  m_Name: PositionPiece8
   m_TagString: SnapZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5322,7 +5257,7 @@ GameObject:
   - component: {fileID: 1865987817}
   - component: {fileID: 1865987816}
   m_Layer: 0
-  m_Name: EmplacementPiece2
+  m_Name: PositionPiece2
   m_TagString: SnapZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5871,8 +5806,12 @@ GameObject:
   - component: {fileID: 2091146998}
   - component: {fileID: 2091146997}
   - component: {fileID: 2091146996}
+  - component: {fileID: 2091147004}
+  - component: {fileID: 2091147003}
+  - component: {fileID: 2091147002}
+  - component: {fileID: 2091147001}
   m_Layer: 0
-  m_Name: "PlateauTermin\xE9"
+  m_Name: BaseDone
   m_TagString: Plateau
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5946,7 +5885,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7978ac43a6f577445837820301170383, type: 2}
+  - {fileID: 2100000, guid: fe652b45c90abef43b044eea227e77f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5991,6 +5930,106 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &2091147001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091146995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a7676b01585ce43908639a27765dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactorFilters: []
+  _maxInteractors: -1
+  _maxSelectingInteractors: -1
+  _data: {fileID: 0}
+  _pointableElement: {fileID: 2091147003}
+  _rigidbody: {fileID: 2091146996}
+  _physicsGrabbable: {fileID: 0}
+  _resetGrabOnGrabsUpdated: 1
+  _scoringModifier:
+    _positionRotationWeight: 0.8
+  _slippiness: 0
+  _supportedGrabTypes: 3
+  _pinchGrabRules:
+    _thumbRequirement: 1
+    _indexRequirement: 1
+    _middleRequirement: 1
+    _ringRequirement: 0
+    _pinkyRequirement: 0
+    _unselectMode: 0
+  _palmGrabRules:
+    _thumbRequirement: 1
+    _indexRequirement: 2
+    _middleRequirement: 2
+    _ringRequirement: 2
+    _pinkyRequirement: 1
+    _unselectMode: 0
+  _movementProvider: {fileID: 0}
+  _handAligment: 1
+  _handGrabPoses: []
+--- !u!114 &2091147002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091146995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1bc992571301d4a9602ac95ef4c71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactorFilters: []
+  _maxInteractors: -1
+  _maxSelectingInteractors: -1
+  _data: {fileID: 0}
+  _pointableElement: {fileID: 2091147003}
+  _rigidbody: {fileID: 2091146996}
+  _grabSource: {fileID: 0}
+  _useClosestPointAsGrabSource: 0
+  _releaseDistance: 0
+  _resetGrabOnGrabsUpdated: 1
+  _physicsGrabbable: {fileID: 0}
+--- !u!114 &2091147003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091146995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f86b14a27b52f4f9298c33015b5c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transferOnSecondSelection: 0
+  _addNewPointsToFront: 0
+  _forwardElement: {fileID: 0}
+  _oneGrabTransformer: {fileID: 0}
+  _twoGrabTransformer: {fileID: 0}
+  _targetTransform: {fileID: 0}
+  _maxGrabPoints: -1
+--- !u!114 &2091147004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091146995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
 --- !u!1 &2125414548
 GameObject:
   m_ObjectHideFlags: 0
@@ -6008,7 +6047,6 @@ GameObject:
   - component: {fileID: 2125414552}
   - component: {fileID: 2125414551}
   - component: {fileID: 2125414550}
-  - component: {fileID: 2125414558}
   - component: {fileID: 2125414559}
   m_Layer: 0
   m_Name: Piece7
@@ -6230,18 +6268,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125414548}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2125414558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2125414548}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 905e6c7022038f24382b3161e791cca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2125414559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6274,8 +6300,8 @@ MonoBehaviour:
   - {fileID: 2125414549}
   - {fileID: 955128319}
   - {fileID: 1083959987}
-  plateau: {fileID: 607281228}
-  plateauTermine: {fileID: 2091146995}
+  puzzleBase: {fileID: 607281228}
+  puzzleBaseDone: {fileID: 2091146995}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
