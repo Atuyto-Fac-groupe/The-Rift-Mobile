@@ -73,6 +73,7 @@ public class SnapObject : MonoBehaviour
             if (pieceScript.currentSnapZone != snapZones[i])
             {
                 allCorrect = false;
+                Debug.Log($"Piece {i} is not in the correct snap zone.");
                 break;
             }
         }
@@ -87,6 +88,7 @@ public class SnapObject : MonoBehaviour
     void DisappearPuzzle()
     {
         // Faire disparaître le plateau
+        Debug.Log("Puzzle completed! Plateau disappeared.");
         puzzleBase.gameObject.SetActive(false);
         foreach (Transform piece in puzzlePieces)
         {
