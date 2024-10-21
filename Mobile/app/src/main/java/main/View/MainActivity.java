@@ -42,13 +42,6 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
         this.tableControler = new TableControler(this.binding.idFragContainer, this);
         this.binding.tabLayout.addOnTabSelectedListener( this.tableControler);
 
-        this.binding.carto.setOnClickListener((view -> {
-           startActivity(new Intent(this, CartographyActivity.class));
-        }));
-
-        this.binding.test.setOnClickListener((view -> {
-            startActivity(new Intent(this, MapFragment.class));
-        }));
     }
 
 
