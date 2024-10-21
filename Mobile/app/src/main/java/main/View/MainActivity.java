@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
         this.tableControler = new TableControler(this.binding.idFragContainer, this);
         this.binding.tabLayout.addOnTabSelectedListener( this.tableControler);
 
+        this.getSupportFragmentManager().beginTransaction()
+                .replace(this.binding.idFragContainer.getId(), new FragmentHistoire())
+                .addToBackStack(this.binding.idFragContainer.getTransitionName())
+                .commit();
+
     }
 
 
