@@ -1,96 +1,93 @@
 package main.View;
 
+import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.*;
 import android.graphics.Color;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
-import com.example.therift.R;
 import com.example.therift.databinding.FragmentHistoireBinding;
+import main.Controler.ColorChanger;
+import main.Model.Stories;
+import java.util.*;
 
-import main.Model.BDD.AppDatabase;
-import main.Model.Histoire;
-
-import java.util.List;
 
 public class FragmentHistoire extends Fragment {
 
     private FragmentHistoireBinding binding;
-    private AppDatabase db;
+    private List<Stories> stories;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentHistoireBinding.inflate(getLayoutInflater());
-        db = AppDatabase.getInstance(this.getContext());
+        this.binding = FragmentHistoireBinding.inflate(getLayoutInflater());
+        Stories.initStories(Objects.requireNonNull(this.getContext()).getResources());
+        this.stories = Stories.getStories();
 
-        deleteAllStoriesAndAddNew();
+        Stories currentStorie = this.stories.stream()
+                .filter(story -> story.getOrder() == 1)
+                .findFirst()
+                .orElse(null);
 
-        new Thread(() -> {
-            List<Histoire> displayedHistoires = db.histoireDao().getAllDisplayedHistoires();
+        if (currentStorie != null) {
+            updateHistoire(currentStorie);
+        }
 
-            this.getActivity().runOnUiThread(() -> {
-                for (Histoire histoire : displayedHistoires) {
-                    updateHistoire(histoire); // Display each previously displayed histoire
-                }
-            });
-        }).start();
 
         return binding.getRoot();
     }
 
-    public void sendHistoire(int number) {
-        new Thread(() -> {
-            List<Histoire> histoires = db.histoireDao().getAllHistoires();
-
-            if (number >= 0 && number < histoires.size()) {
-                Histoire selectedHistoire = histoires.get(number);
-
-                selectedHistoire.setDisplayed(true);
-                db.histoireDao().updateHistoire(selectedHistoire);
-
-                this.getActivity().runOnUiThread(() -> updateHistoire(selectedHistoire));
-            } else {
-                this.getActivity().runOnUiThread(() -> {
-                    TextView errorMessage = new TextView(this.getContext());
-                    errorMessage.setText("Histoire non trouvée.");
-                    binding.liHistoires.addView(errorMessage);
-                });
-            }
-        }).start();
-    }
-
-    private void updateHistoire(Histoire histoire) {
+    private void updateHistoire(Stories stories) {
         LinearLayout parentLayout = this.binding.liHistoires;
 
-        // Create a TextView for the histoire text
+        Map<String, Object> sequences = this.textToMap(stories.getHistoireText());
+
+        if (!sequences.isEmpty()) {
+            Map.Entry<String, Object> firstEntry = sequences.entrySet().iterator().next();
+            String firstKey = firstEntry.getKey();
+            Object firstValue = firstEntry.getValue();
+            if (firstKey.equals("picture")) {
+                parentLayout.addView(this.showImage((String) firstValue));
+            } else if (firstKey.equals("sequential")) {
+                FrameLayout frameLayout = getFrameLayout((List<String>) firstValue);
+                parentLayout.addView(frameLayout);
+            }
+        }
+        else{
+            parentLayout.addView(this.setEnigmaText(stories));
+            parentLayout.addView(this.setEnigmaTips(stories, parentLayout));
+        }
+
+
+    }
+
+    private FrameLayout getFrameLayout(List<String> colorsString) {
+        List<Integer> colors = new ArrayList<>();
+        Timer timer = new Timer();
+        colorsString.forEach(s -> colors.add(this.getColorFromName(s)));
+        FrameLayout frameLayout = new FrameLayout(this.getContext());
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+        );
+        frameLayout.setLayoutParams(layoutParams);
+        timer.schedule(new ColorChanger(frameLayout, colors, this.getActivity()), 1000, 1000);
+        return frameLayout;
+    }
+
+
+    private TextView setEnigmaText(Stories stories) {
         TextView histoireTextView = new TextView(this.getContext());
-        histoireTextView.setText(histoire.getHistoireText());
+        histoireTextView.setText(stories.getHistoireText());
         histoireTextView.setTextSize(18);
         histoireTextView.setTextColor(Color.BLACK);
 
-        // Create a TextView for the histoire tips
-        TextView histoireTipsView = new TextView(this.getContext());
-        histoireTipsView.setText(histoire.getHistoireTips());
-        histoireTipsView.setTextSize(16);
-        histoireTipsView.setTextColor(Color.GRAY);
-
-        // Check if noButton is true. If so, show tips immediately, otherwise hide them initially
-        if (histoire.getNoButton()) {
-            histoireTipsView.setVisibility(View.VISIBLE); // Show tips if noButton is true
-        } else {
-            histoireTipsView.setVisibility(View.GONE); // Hide tips initially if noButton is false
-        }
-
-        // Layout parameters for histoire text
         LinearLayout.LayoutParams textLayoutParams = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
@@ -98,7 +95,21 @@ public class FragmentHistoire extends Fragment {
         textLayoutParams.setMargins(20, 20, 20, 10);
         histoireTextView.setLayoutParams(textLayoutParams);
 
-        // Layout parameters for the tips
+        return histoireTextView;
+    }
+
+    private TextView setEnigmaTips(Stories stories, LinearLayout parentLayout) {
+        TextView histoireTipsView = new TextView(this.getContext());
+        histoireTipsView.setText(stories.getHistoireTips());
+        histoireTipsView.setTextSize(16);
+        histoireTipsView.setTextColor(Color.GRAY);
+
+        if (stories.getNoButton() && !Objects.equals(stories.getHistoireTips(), "")) {
+            histoireTipsView.setVisibility(View.VISIBLE);
+        } else {
+            histoireTipsView.setVisibility(View.GONE);
+        }
+
         LinearLayout.LayoutParams tipsLayoutParams = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
@@ -106,22 +117,14 @@ public class FragmentHistoire extends Fragment {
         tipsLayoutParams.setMargins(20, 0, 20, 20);
         histoireTipsView.setLayoutParams(tipsLayoutParams);
 
-        // Add the TextView for the story to the parent layout first
-        parentLayout.addView(histoireTextView);
-
-        // Only create a button if noButton is false
-        if (!histoire.getNoButton()) {
-            // Create a button to show tips
+        if (!stories.getNoButton() && !Objects.equals(stories.getHistoireTips(), "")) {
             Button showTipsButton = new Button(this.getContext());
             showTipsButton.setText("Voir l'astuce");
 
-            // Set the button's click listener to reveal the tips and remove the button
             showTipsButton.setOnClickListener(v -> {
                 histoireTipsView.setVisibility(View.VISIBLE);
-                parentLayout.removeView(showTipsButton); // Remove button after click
+                parentLayout.removeView(showTipsButton);
             });
-
-            // Layout parameters for the button
             LinearLayout.LayoutParams buttonLayoutParams = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
@@ -129,43 +132,71 @@ public class FragmentHistoire extends Fragment {
             buttonLayoutParams.setMargins(20, 0, 20, 20);
             showTipsButton.setLayoutParams(buttonLayoutParams);
 
-            // Add the button to the layout after the story text
-            parentLayout.addView(showTipsButton);
         }
-
-        // Finally, add the TextView for the tips to the parent layout
-        parentLayout.addView(histoireTipsView);
+        return histoireTipsView;
     }
 
+    private ImageView showImage(String path) {
+        ImageView imageView = new ImageView(this.getContext());
+        imageView.setImageDrawable(this.getResourceByName(path));
+        LinearLayout.LayoutParams imageLayoutParams = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        imageLayoutParams.setMargins(20, 20, 20, 20);
+        imageView.setLayoutParams(imageLayoutParams);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        return imageView;
+    }
 
-    private void deleteAllStoriesAndAddNew() {
-        new Thread(() -> {
-            db.histoireDao().deleteAllHistoire();
+    @SuppressLint("DiscouragedApi")
+    private Drawable getResourceByName(String resourceName) {
+        int resourceId = getResources().getIdentifier(resourceName, "drawable", Objects.requireNonNull(getContext()).getPackageName());
+        if (resourceId != 0) {
+            return ContextCompat.getDrawable(getContext(), resourceId);
+        }
+        return null;
+    }
 
-            Histoire histoire0 = new Histoire();
-            histoire0.setHistoireText("Votre histoire commence ici.");
-            histoire0.setHistoireTips("");
-            histoire0.setDisplayed(true);
-            histoire0.setNoButton(true);
+    private Map<String, Object> textToMap(String sequence) {
+        Map<String, Object> map = new HashMap<>();
+        String[] elements = sequence.split("/");
 
-            db.histoireDao().insertHistoire(histoire0);
+        for (String element : elements) {
+            if (element.contains(":")) {
+                String[] parts = element.split(":", 2);
+                String cle = parts[0].trim();
+                String valeur = parts[1].trim();
 
-            Histoire histoire1 = new Histoire();
-            histoire1.setHistoireText("Nouvelle histoire 1.");
-            histoire1.setHistoireTips("Astuce : Trouvez l'indice.");
-            histoire1.setDisplayed(false);
-            histoire1.setNoButton(false);
+                if (valeur.contains(",")) {
+                    List<String> liste = Arrays.asList(valeur.split(","));
+                    liste.replaceAll(String::trim);
+                    map.put(cle, liste);
+                } else {
+                    map.put(cle, valeur);
+                }
+            }
+        }
 
-            db.histoireDao().insertHistoire(histoire1);
+        return map;
+    }
 
-            Histoire histoire2 = new Histoire();
-            histoire2.setHistoireText("Nouvelle histoire 2.");
-            histoire2.setHistoireTips("Astuce : Résolvez l'énigme.");
-            histoire2.setDisplayed(false);
-            histoire2.setNoButton(false);
-
-            db.histoireDao().insertHistoire(histoire2);
-
-        }).start();
+    private int getColorFromName(String colorName) {
+        switch (colorName) {
+            case "red":
+                return Color.RED;
+            case "blue":
+                return Color.BLUE;
+            case "green":
+                return Color.GREEN;
+            case "yellow":
+                return Color.YELLOW;
+            case "orange":
+                return Color.GRAY;
+            case "purple":
+                return Color.MAGENTA;
+            default:
+                return Color.BLACK;
+        }
     }
 }
