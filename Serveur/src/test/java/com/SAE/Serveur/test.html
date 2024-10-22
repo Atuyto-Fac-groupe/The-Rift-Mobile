@@ -14,7 +14,10 @@
 
 <!-- Champ pour envoyer un message -->
 <input type="text" id="messageInput" placeholder="Tapez un message...">
-<button id="send" >Envoyer</button>
+<button id="send">Envoyer</button>
+<button id="send1">Enigme 1</button>
+<button id="send2">Enigme 2</button>
+<button id="send3">Enigme 3</button>
 
 <script>
     // Créer une nouvelle connexion WebSocket
@@ -44,35 +47,68 @@
         document.getElementById("messages").innerHTML += "<p>Connexion fermée</p>";
     };
 
-    function sendMessage() {
-    const messageText = document.getElementById("messageInput").value;
+    function sendMessage(customMessagePayload) {
+        // Vérifie si la connexion WebSocket est ouverte avant d'envoyer
+        if (socket.readyState === WebSocket.OPEN) {
+            // Envoyer l'objet JSON sous forme de chaîne via WebSocket
+            socket.send(JSON.stringify(customMessagePayload));
+            console.log("Message envoyé : ", JSON.stringify(customMessagePayload));  // Log du message envoyé
+        } else {
+            console.log("WebSocket n'est pas encore prêt pour l'envoi.");
+        }
 
-    // Créer un objet JSON avec le message et le destinataire
-    const messagePayload = {
-        from: '1',       // idpersonne de l'expéditeur
-        to: '2',        // idpersonne du destinataire
-        message: messageText       // Contenu du message
-    };
-
-    // Vérifie si la connexion WebSocket est ouverte avant d'envoyer
-    if (socket.readyState === WebSocket.OPEN) {
-        // Envoyer l'objet JSON sous forme de chaîne via WebSocket
-        socket.send(JSON.stringify(messagePayload));
-        console.log("Message envoyé : ", JSON.stringify(messagePayload));  // Log du message envoyé
-    } else {
-        console.log("WebSocket n'est pas encore prêt pour l'envoi.");
+        // Afficher le message dans l'interface
+        document.getElementById("messages").innerHTML += "<p>Message envoyé : " + JSON.stringify(customMessagePayload) + "</p>";
     }
 
-    // Afficher le message dans l'interface
-    document.getElementById("messages").innerHTML += "<p>Message envoyé à " + 2 + " : " + messageText + "</p>";
+    document.getElementById("send").addEventListener("click", () => {
+        const messageText = document.getElementById("messageInput").value;
 
-    // Vider le champ de texte
-    document.getElementById("messageInput").value = '';
-}
-document.getElementById("send").addEventListener("click", ()=>{
-    sendMessage()
-})
+        const messagePayload = {
+            from: '1',       // idpersonne de l'expéditeur
+            to: '2',         // idpersonne du destinataire
+            message: messageText
+        };
 
+        sendMessage(messagePayload);
+        document.getElementById("messageInput").value = ''; // Vider le champ de texte
+    });
+
+    document.getElementById("send1").addEventListener("click", () => {
+        const messagePayload = {
+            from: '1',
+            to: '2',
+            message: JSON.stringify({
+                title: 'Système',
+                code: 12500
+            }) // Convertir en JSON string
+        };
+        sendMessage(messagePayload);
+    });
+
+    document.getElementById("send2").addEventListener("click", () => {
+        const messagePayload = {
+            from: '1',
+            to: '2',
+            message: JSON.stringify({
+                title: 'Système',
+                code: 12501
+            }) // Convertir en JSON string
+        };
+        sendMessage(messagePayload);
+    });
+
+    document.getElementById("send3").addEventListener("click", () => {
+        const messagePayload = {
+            from: '1',
+            to: '2',
+            message: JSON.stringify({
+                title: 'Système',
+                code: 12502
+            }) // Convertir en JSON string
+        };
+        sendMessage(messagePayload);
+    });
 
 </script>
 

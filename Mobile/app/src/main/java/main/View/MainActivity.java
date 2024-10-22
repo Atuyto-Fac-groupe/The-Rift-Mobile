@@ -8,10 +8,12 @@ import com.example.therift.databinding.MainActivityBinding;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import main.App;
 import main.Controler.SocketObserver;
 import main.Controler.TableControler;
 import main.Model.Message;
+import main.Model.SystemMessage;
 import main.View.Cartography.CartographyActivity;
 import main.View.Cartography.MapFragment;
 import okhttp3.Response;
@@ -69,15 +71,20 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
     @Override
     public void onMessage(WebSocket webSocket, String text) {
         Message message = gson.fromJson(text, Message.class);
-        App.player.add(message);
-        this.runOnUiThread(() -> {
-            if (this.binding.tabLayout.getSelectedTabPosition() != 2) {
-                TabLayout.Tab tab = this.binding.tabLayout.getTabAt(2);
-                BadgeDrawable badgeDrawable = tab.getOrCreateBadge();
-                badgeDrawable.setVisible(true);
-                badgeDrawable.setNumber(App.player.getNotSee());
-            }
-        });
+        try {
+            SystemMessage systemMessage = gson.fromJson(message.getMessage(), SystemMessage.class);
+        } catch (JsonSyntaxException e) {
+            App.player.add(message);
+            this.runOnUiThread(() -> {
+                if (this.binding.tabLayout.getSelectedTabPosition() != 2) {
+                    TabLayout.Tab tab = this.binding.tabLayout.getTabAt(2);
+                    BadgeDrawable badgeDrawable = tab.getOrCreateBadge();
+                    badgeDrawable.setVisible(true);
+                    badgeDrawable.setNumber(App.player.getNotSee());
+                }
+            });
+        }
+
     }
 
     @Override
