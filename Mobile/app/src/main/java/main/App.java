@@ -3,13 +3,20 @@ package main;
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import com.google.gson.Gson;
 import main.Model.BDD.ObjectBox;
+import main.Model.Message;
 import main.Model.Player;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 import main.Controler.SocketObserver;
 import main.Model.OnSocketListener;
 import main.Model.SocketManager;
+
+import java.util.List;
+import java.util.Objects;
 
 public class App extends Application implements SocketObserver {
 
@@ -23,11 +30,8 @@ public class App extends Application implements SocketObserver {
     public static final int COL = 10;
 
 
-
+    public static LiveData<List<Message>> systemMessages;
     public static Player player;
-
-    public static final int ROW = 20;
-    public static final int COL = 20;
 
     public static final int  NBENIGMA = 3;
 
@@ -39,6 +43,7 @@ public class App extends Application implements SocketObserver {
         socketManager = SocketManager.getInstance(socketListener);
         socketManager.startConnection();
         player = new Player();
+        systemMessages = new MutableLiveData<List<Message>>();
         ObjectBox.init(this);
 
     }
@@ -52,6 +57,10 @@ public class App extends Application implements SocketObserver {
 
     @Override
     public void onMessage(WebSocket webSocket, String text) {
+        Gson gson = new Gson();
+        Message message = gson.fromJson(text, Message.class);
+        //TODO faire vérif que bien messages système
+        Objects.requireNonNull(systemMessages.getValue()).add(message);
         Log.d("Socket",text);
     }
 
