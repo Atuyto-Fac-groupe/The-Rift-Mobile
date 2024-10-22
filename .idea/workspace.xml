@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca2f9564-e16e-475b-9271-fe8e2b35bc6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Quest/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Quest/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/Assets/ChangeLight.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/Assets/ChangeLight.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/Assets/Oculus/SampleFramework/Usage/SceneManager/Materials/Blue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Quest/Assets/Oculus/SampleFramework/Usage/SceneManager/Materials/Blue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/Assets/Oculus/SampleFramework/Usage/SceneManager/Materials/Green.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Quest/Assets/Oculus/SampleFramework/Usage/SceneManager/Materials/Green.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/Assets/Oculus/SampleFramework/Usage/SceneManager/Materials/Yellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Quest/Assets/Oculus/SampleFramework/Usage/SceneManager/Materials/Yellow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/Assets/Oculus/VR/Editor/BuildingBlocks/BlockData/RoomModel/Materials/Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Quest/Assets/Oculus/VR/Editor/BuildingBlocks/BlockData/RoomModel/Materials/Red.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/Assets/Scenes/SampleScene 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Quest/Assets/Scenes/SampleScene 1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/Assets/SnapObject.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/Assets/SnapObject.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/Assets/transparent.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/Assets/transparent.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Quest/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +41,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Enigme2",
     "last_opened_file_path": "C:/Users/emeli/Documents/BUT/BUT3/SAE/theRift",
@@ -55,6 +66,15 @@
       <workItem from="1727787923988" duration="77000" />
       <workItem from="1729578283345" duration="489000" />
     </task>
+    <task id="LOCAL-00001" summary="Rectification des mains">
+      <option name="closed" value="true" />
+      <created>1729582038503</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729582038503</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -62,6 +82,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Suppression de la table et de la scene inutile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Suppression de la table et de la scene inutile" />
+    <MESSAGE value="Rectification des mains" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rectification des mains" />
   </component>
 </project>
