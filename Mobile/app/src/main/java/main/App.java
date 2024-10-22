@@ -26,12 +26,10 @@ public class App extends Application implements SocketObserver {
 
     public static SocketManager socketManager;
 
-    public static final int ROW = 10;
-    public static final int COL = 10;
-
-
-    public static LiveData<List<Message>> systemMessages;
     public static Player player;
+
+    public static final int ROW = 20;
+    public static final int COL = 20;
 
     public static final int  NBENIGMA = 3;
 
