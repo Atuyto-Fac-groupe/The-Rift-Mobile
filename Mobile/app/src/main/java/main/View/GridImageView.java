@@ -23,6 +23,7 @@ public class GridImageView extends ImageView {
     private float playerX;
     private float playerY;
 
+
     public GridImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
