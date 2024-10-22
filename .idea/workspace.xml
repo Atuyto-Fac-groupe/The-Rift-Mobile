@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca2f9564-e16e-475b-9271-fe8e2b35bc6b" name="Changes" comment="" />
+    <list default="true" id="ca2f9564-e16e-475b-9271-fe8e2b35bc6b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Quest/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quest/.idea/Quest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Quest/.idea/Quest.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +29,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/emeli/Documents/BUT/BUT3/SAE/theRift/Quest",
+    "last_opened_file_path": "C:/Users/emeli/Documents/BUT/BUT3/SAE/theRift",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
@@ -38,6 +49,7 @@
       <workItem from="1727786068926" duration="3000" />
       <workItem from="1727787858589" duration="61000" />
       <workItem from="1727787923988" duration="77000" />
+      <workItem from="1729578283345" duration="489000" />
     </task>
     <servers />
   </component>
