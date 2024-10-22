@@ -57,6 +57,7 @@ dependencies {
     debugImplementation("io.objectbox:objectbox-android-objectbrowser:4.0.3")
     implementation(libs.zxing.android.embedded)
     implementation(libs.core)
+
 }
 
 apply(plugin = "io.objectbox")

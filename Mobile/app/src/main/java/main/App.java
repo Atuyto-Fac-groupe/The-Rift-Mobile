@@ -6,21 +6,20 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import main.Model.*;
 import main.Model.BDD.ObjectBox;
-import main.Model.Message;
-import main.Model.Player;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 import main.Controler.SocketObserver;
-import main.Model.OnSocketListener;
-import main.Model.SocketManager;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class App extends Application implements SocketObserver {
 
-    public static String WebSocketUrl = "ws://10.6.5.93:9001/ws?idpersonne=2";
+    public static String WebSocketUrl = "ws://192.168.1.34:9001/ws?idpersonne=2";
 
     public static OnSocketListener socketListener;
 
@@ -30,6 +29,8 @@ public class App extends Application implements SocketObserver {
 
     public static final int ROW = 20;
     public static final int COL = 20;
+
+    public static MutableLiveData<List<SystemMessage>> systemMessages;
 
     public static final int  NBENIGMA = 3;
 
@@ -41,7 +42,7 @@ public class App extends Application implements SocketObserver {
         socketManager = SocketManager.getInstance(socketListener);
         socketManager.startConnection();
         player = new Player();
-        systemMessages = new MutableLiveData<List<Message>>();
+        systemMessages = new MutableLiveData<>(new ArrayList<>());
         ObjectBox.init(this);
 
     }
@@ -53,13 +54,20 @@ public class App extends Application implements SocketObserver {
         Log.d("Socket","Connexion etablie");
     }
 
-    @Override
     public void onMessage(WebSocket webSocket, String text) {
         Gson gson = new Gson();
         Message message = gson.fromJson(text, Message.class);
-        //TODO faire vérif que bien messages système
-        Objects.requireNonNull(systemMessages.getValue()).add(message);
-        Log.d("Socket",text);
+        try {
+            SystemMessage systemMessage = gson.fromJson(message.getMessage(), SystemMessage.class);
+            List<SystemMessage> currentMessages = systemMessages.getValue();
+            if (currentMessages != null) {
+                currentMessages.add(systemMessage);
+                systemMessages.postValue(currentMessages);
+            }
+        } catch (JsonSyntaxException e) {
+            Log.d("Socket", "Json syntax error");
+        }
+        Log.d("Socket", text);
     }
 
     @Override

@@ -12,9 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import com.example.therift.R;
 import com.example.therift.databinding.FragmentHistoireBinding;
+import main.App;
 import main.Controler.ColorChanger;
 import main.Model.Stories;
+import main.Model.SystemMessage;
+import androidx.lifecycle.Observer;
+
+
 import java.util.*;
 
 
@@ -23,6 +29,7 @@ public class FragmentHistoire extends Fragment {
     private FragmentHistoireBinding binding;
     private List<Stories> stories;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -30,39 +37,73 @@ public class FragmentHistoire extends Fragment {
         Stories.initStories(Objects.requireNonNull(this.getContext()).getResources());
         this.stories = Stories.getStories();
 
-        Stories currentStorie = this.stories.stream()
-                .filter(story -> story.getOrder() == 1)
-                .findFirst()
-                .orElse(null);
 
-        if (currentStorie != null) {
-            updateHistoire(currentStorie);
-        }
 
+
+        App.systemMessages.observe(this, new Observer<List<SystemMessage>>() {
+
+            @Override
+            public void onChanged(List<SystemMessage> systemMessages) {
+                updateStoriesByServer();
+            }
+        });
 
         return binding.getRoot();
     }
 
-    private void updateHistoire(Stories stories) {
-        LinearLayout parentLayout = this.binding.liHistoires;
+    private void updateStoriesByServer() {
 
-        Map<String, Object> sequences = this.textToMap(stories.getHistoireText());
 
-        if (!sequences.isEmpty()) {
-            Map.Entry<String, Object> firstEntry = sequences.entrySet().iterator().next();
-            String firstKey = firstEntry.getKey();
-            Object firstValue = firstEntry.getValue();
-            if (firstKey.equals("picture")) {
-                parentLayout.addView(this.showImage((String) firstValue));
-            } else if (firstKey.equals("sequential")) {
-                FrameLayout frameLayout = getFrameLayout((List<String>) firstValue);
-                parentLayout.addView(frameLayout);
+
+        List<SystemMessage> systemMessages = App.systemMessages.getValue();
+        this.binding.liHistoires.removeAllViews();
+        this.stories.stream()
+                .filter(story -> story.getOrder() == 1)
+                .findFirst().ifPresent(this::updateHistoire);
+        if(systemMessages == null || systemMessages.isEmpty()) {return;}
+        for (SystemMessage systemMessage : systemMessages) {
+
+            Map<String, Integer> codeToOrderMap = new HashMap<>();
+            codeToOrderMap.put(getResources().getString(R.string.code_Enigma_1), 2);
+            codeToOrderMap.put(getResources().getString(R.string.code_Enigma_2), 3);
+            codeToOrderMap.put(getResources().getString(R.string.code_Enigma_3), 4);
+
+            Integer orderToUpdate = codeToOrderMap.get(systemMessage.getCode());
+            if (orderToUpdate != null) {
+                this.stories.stream()
+                        .filter(story -> story.getOrder() == orderToUpdate)
+                        .findFirst()
+                        .ifPresent(this::updateHistoire);
             }
         }
-        else{
-            parentLayout.addView(this.setEnigmaText(stories));
-            parentLayout.addView(this.setEnigmaTips(stories, parentLayout));
-        }
+
+    }
+
+    private void updateHistoire(Stories stories) {
+
+        LinearLayout parentLayout = this.binding.liHistoires;
+        Map<String, Object> sequences = this.textToMap(stories.getHistoireText());
+        parentLayout.post(()-> {
+            if (!sequences.isEmpty()) {
+                Map.Entry<String, Object> firstEntry = sequences.entrySet().iterator().next();
+                String firstKey = firstEntry.getKey();
+                Object firstValue = firstEntry.getValue();
+                if (firstKey.equals("picture")) {
+                    parentLayout.addView(this.showImage((String) firstValue));
+                } else if (firstKey.equals("sequential")) {
+                    FrameLayout frameLayout = getFrameLayout((List<String>) firstValue);
+                    parentLayout.addView(frameLayout);
+                }
+            }
+            else{
+                parentLayout.addView(this.setEnigmaText(stories));
+                parentLayout.addView(this.setEnigmaTips(stories, parentLayout));
+            }
+
+            this.binding.idSvMain.post(() -> this.binding.idSvMain.fullScroll(View.FOCUS_DOWN));
+        });
+
+
 
 
     }
@@ -70,11 +111,12 @@ public class FragmentHistoire extends Fragment {
     private FrameLayout getFrameLayout(List<String> colorsString) {
         List<Integer> colors = new ArrayList<>();
         Timer timer = new Timer();
+
         colorsString.forEach(s -> colors.add(this.getColorFromName(s)));
         FrameLayout frameLayout = new FrameLayout(this.getContext());
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
+                this.binding.idSvMain.getHeight()
         );
         frameLayout.setLayoutParams(layoutParams);
         timer.schedule(new ColorChanger(frameLayout, colors, this.getActivity()), 1000, 1000);
