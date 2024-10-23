@@ -80,8 +80,11 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
                     TabLayout.Tab tab = this.binding.tabLayout.getTabAt(2);
                     BadgeDrawable badgeDrawable = tab.getOrCreateBadge();
                     badgeDrawable.setVisible(true);
+                    message.setSee(false);
                     badgeDrawable.setNumber(App.player.getNotSee());
                 }
+                else message.setSee(true);
+
             });
         }
 
