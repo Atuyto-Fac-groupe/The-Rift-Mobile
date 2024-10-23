@@ -34,6 +34,8 @@ public class App extends Application implements SocketObserver {
 
     public static final int  NBENIGMA = 3;
 
+    public static List<String> roomCode = new ArrayList<>();
+
     @Override
     public void onCreate() {
         super.onCreate();

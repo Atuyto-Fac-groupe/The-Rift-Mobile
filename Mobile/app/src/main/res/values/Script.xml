@@ -3,7 +3,7 @@
 
     <string name="GameStart">Bonjour, </string>
 
-    <string name="Enigma_1">/picture:egnigma1/</string>
+    <string name="Enigma_1">une phrase /picture:egnigma1/ l\'image est belle</string>
 
     <string name="Enigma_2">/sequential:red, green, blue, black/</string>
 
