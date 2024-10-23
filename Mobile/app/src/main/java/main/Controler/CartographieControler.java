@@ -4,17 +4,14 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.view.MotionEvent;
 import android.view.View;
 import androidx.core.app.ActivityCompat;
 import io.objectbox.Box;
-import main.App;
 import main.Model.BDD.ObjectBox;
 import main.Model.cartography.*;
 import main.View.Cartography.CartographyActivity;
-import main.View.GridImageView;
 
 import java.util.*;
 import java.util.stream.Collectors;

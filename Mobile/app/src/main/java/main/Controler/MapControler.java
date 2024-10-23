@@ -2,20 +2,14 @@ package main.Controler;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import androidx.core.app.ActivityCompat;
-import io.objectbox.Box;
-import main.Model.BDD.ObjectBox;
 import main.Model.cartography.Calibration;
 import main.Model.cartography.Router;
-import main.Model.cartography.Router_;
-import main.View.Cartography.FloorPlanView;
 import main.View.GridImageView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
