@@ -1,6 +1,7 @@
 package main.View;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,14 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import android.graphics.Color;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import com.example.therift.R;
 import com.example.therift.databinding.FragmentHistoireBinding;
+import com.example.therift.databinding.QrcodeAskingLayoutBinding;
 import main.App;
 import main.Controler.ColorChanger;
+import main.Controler.OnQrCodeScan;
 import main.Model.Stories;
 import main.Model.SystemMessage;
 import androidx.lifecycle.Observer;
@@ -23,12 +29,14 @@ import androidx.lifecycle.Observer;
 
 import java.util.*;
 
+import static android.app.Activity.RESULT_OK;
 
-public class FragmentHistoire extends Fragment {
+
+public class FragmentHistoire extends Fragment{
 
     private FragmentHistoireBinding binding;
     private List<Stories> stories;
-
+    private ActivityResultLauncher<Intent> qrCodeScanLauncher;
 
     @Nullable
     @Override
@@ -36,39 +44,93 @@ public class FragmentHistoire extends Fragment {
         this.binding = FragmentHistoireBinding.inflate(getLayoutInflater());
         Stories.initStories(Objects.requireNonNull(this.getContext()).getResources());
         this.stories = Stories.getStories();
-
-
-
-
+        this.initActivityResultLauncher();
         App.systemMessages.observe(this, new Observer<List<SystemMessage>>() {
 
             @Override
             public void onChanged(List<SystemMessage> systemMessages) {
-                updateStoriesByServer();
+                if (!systemMessages.isEmpty()) {
+                    SystemMessage lastSystemMessage = systemMessages.get(systemMessages.size() - 1);
+                    boolean inSuccess = App.roomCode.stream()
+                            .anyMatch(code -> code.equals(lastSystemMessage.getCode()));
+                    if (!inSuccess) {
+                        needQRCodeScann(lastSystemMessage.getCode());
+                    }
+                    else {
+                        updateStoriesByServer();
+                    }
+                }
+                else updateStoriesByServer();
+
+
             }
         });
 
         return binding.getRoot();
     }
 
+    private void initActivityResultLauncher() {
+        qrCodeScanLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                String qrCodeContent = result.getData().getStringExtra("QR_CODE_CONTENT");
+                if (qrCodeContent != null) {
+                    if (getResources().getString(R.string.code_Enigma_2).equals(qrCodeContent)){
+                        App.roomCode.add(qrCodeContent);
+                        this.updateStoriesByServer();
+                    }
+                    if (getResources().getString(R.string.code_Enigma_3).equals(qrCodeContent)){
+                        boolean inSuccess = App.roomCode.stream()
+                                .anyMatch(code -> code.equals(getResources().getString(R.string.code_Enigma_2)));
+                        if (inSuccess) {
+                            App.roomCode.add(qrCodeContent);
+                            this.updateStoriesByServer();
+                        }
+                        else {
+                            Toast.makeText(getContext(), "Vous vous êtes trompé de salle.", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+            } else {
+                Toast.makeText(getContext(), "Scan annulé", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void needQRCodeScann(String code){
+        this.binding.liHistoires.removeAllViews();
+        LayoutInflater inflater = LayoutInflater.from(this.getContext());
+        View itemLayout = inflater.inflate(R.layout.qrcode_asking_layout, this.binding.liHistoires, false);
+        QrcodeAskingLayoutBinding qrCodeBinding = QrcodeAskingLayoutBinding.bind(itemLayout);
+        if (getResources().getString(R.string.code_Enigma_2).equals(code)){
+            qrCodeBinding.roomTextView.setText("Retrouve moi en salle 108");
+        }
+        if (getResources().getString(R.string.code_Enigma_3).equals(code)){
+            qrCodeBinding.roomTextView.setText("Retrouve moi en salle 118");
+        }
+        qrCodeBinding.qrScannerImageView.setOnClickListener((v -> {
+            Intent intent = new Intent(getActivity(), QRCodeScanner.class);
+            qrCodeScanLauncher.launch(intent);
+        }));
+        this.binding.liHistoires.addView(itemLayout);
+
+    }
+
     private void updateStoriesByServer() {
-
-
 
         List<SystemMessage> systemMessages = App.systemMessages.getValue();
         this.binding.liHistoires.removeAllViews();
         this.stories.stream()
-                .filter(story -> story.getOrder() == 1)
+                .filter(story -> story.getOrder() == 2)
                 .findFirst().ifPresent(this::updateHistoire);
         if(systemMessages == null || systemMessages.isEmpty()) {return;}
         for (SystemMessage systemMessage : systemMessages) {
 
             Map<String, Integer> codeToOrderMap = new HashMap<>();
-            codeToOrderMap.put(getResources().getString(R.string.code_Enigma_1), 2);
             codeToOrderMap.put(getResources().getString(R.string.code_Enigma_2), 3);
             codeToOrderMap.put(getResources().getString(R.string.code_Enigma_3), 4);
 
             Integer orderToUpdate = codeToOrderMap.get(systemMessage.getCode());
+
             if (orderToUpdate != null) {
                 this.stories.stream()
                         .filter(story -> story.getOrder() == orderToUpdate)
@@ -83,30 +145,40 @@ public class FragmentHistoire extends Fragment {
 
         LinearLayout parentLayout = this.binding.liHistoires;
         Map<String, Object> sequences = this.textToMap(stories.getHistoireText());
+        String[] parts = stories.getHistoireText().split("/.*?/");
         parentLayout.post(()-> {
             if (!sequences.isEmpty()) {
                 Map.Entry<String, Object> firstEntry = sequences.entrySet().iterator().next();
                 String firstKey = firstEntry.getKey();
                 Object firstValue = firstEntry.getValue();
                 if (firstKey.equals("picture")) {
+                    if (parts.length > 0){
+                        parentLayout.addView(this.setEnigmaText(parts[0]));
+                    }
                     parentLayout.addView(this.showImage((String) firstValue));
+                    if (parts.length > 0){
+                        parentLayout.addView(this.setEnigmaText(parts[1]));
+                    }
                 } else if (firstKey.equals("sequential")) {
+                    if (parts.length > 0){
+                        parentLayout.addView(this.setEnigmaText(parts[0]));
+                    }
                     FrameLayout frameLayout = getFrameLayout((List<String>) firstValue);
                     parentLayout.addView(frameLayout);
+                    if (parts.length > 0){
+                        parentLayout.addView(this.setEnigmaText(parts[1]));
+                    }
                 }
             }
             else{
-                parentLayout.addView(this.setEnigmaText(stories));
+                parentLayout.addView(this.setEnigmaText(stories.getHistoireText()));
                 parentLayout.addView(this.setEnigmaTips(stories, parentLayout));
             }
 
             this.binding.idSvMain.post(() -> this.binding.idSvMain.fullScroll(View.FOCUS_DOWN));
         });
-
-
-
-
     }
+
 
     private FrameLayout getFrameLayout(List<String> colorsString) {
         List<Integer> colors = new ArrayList<>();
@@ -124,9 +196,9 @@ public class FragmentHistoire extends Fragment {
     }
 
 
-    private TextView setEnigmaText(Stories stories) {
+    private TextView setEnigmaText(String stories) {
         TextView histoireTextView = new TextView(this.getContext());
-        histoireTextView.setText(stories.getHistoireText());
+        histoireTextView.setText(stories);
         histoireTextView.setTextSize(18);
         histoireTextView.setTextColor(Color.BLACK);
 
@@ -134,7 +206,7 @@ public class FragmentHistoire extends Fragment {
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
-        textLayoutParams.setMargins(20, 20, 20, 10);
+//        textLayoutParams.setMargins(20, 20, 20, 10);
         histoireTextView.setLayoutParams(textLayoutParams);
 
         return histoireTextView;
@@ -156,7 +228,7 @@ public class FragmentHistoire extends Fragment {
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
-        tipsLayoutParams.setMargins(20, 0, 20, 20);
+//        tipsLayoutParams.setMargins(20, 0, 20, 20);
         histoireTipsView.setLayoutParams(tipsLayoutParams);
 
         if (!stories.getNoButton() && !Objects.equals(stories.getHistoireTips(), "")) {
@@ -171,7 +243,7 @@ public class FragmentHistoire extends Fragment {
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
             );
-            buttonLayoutParams.setMargins(20, 0, 20, 20);
+//            buttonLayoutParams.setMargins(20, 0, 20, 20);
             showTipsButton.setLayoutParams(buttonLayoutParams);
 
         }
@@ -185,7 +257,7 @@ public class FragmentHistoire extends Fragment {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
-        imageLayoutParams.setMargins(20, 20, 20, 20);
+//        imageLayoutParams.setMargins(20, 20, 20, 20);
         imageView.setLayoutParams(imageLayoutParams);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         return imageView;
@@ -241,4 +313,5 @@ public class FragmentHistoire extends Fragment {
                 return Color.BLACK;
         }
     }
+
 }

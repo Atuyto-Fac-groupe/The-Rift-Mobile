@@ -1,36 +1,21 @@
-package main.Controler;
+package main.View;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class QRCodeScanner extends AppCompatActivity {
 
-
     @Override
-    protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initQRCodeScanner();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
-            if (result.getContents() != null) {
-                String contenu = result.getContents();
-                Toast.makeText(this, "Contenu: " + contenu, Toast.LENGTH_LONG).show();
-            } else {
-
-                Toast.makeText(this, "Scan annulé", Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 
     private void initQRCodeScanner() {
@@ -39,5 +24,24 @@ public class QRCodeScanner extends AppCompatActivity {
         integrator.setOrientationLocked(true);
         integrator.setPrompt("Scan a QR code");
         integrator.initiateScan();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            Intent resultIntent = new Intent();
+            if (result.getContents() != null) {
+                String contenu = result.getContents();
+                resultIntent.putExtra("QR_CODE_CONTENT", contenu);
+                setResult(RESULT_OK, resultIntent); // Set the result to OK with the QR code content
+                finish(); // Close the scanner activity
+            } else {
+                setResult(RESULT_CANCELED); // Set the result to CANCELED
+                Toast.makeText(this, "Scan annulé", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
     }
 }

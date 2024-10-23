@@ -45,7 +45,7 @@
         <activity android:name="main.View.MainActivity"/>
         <activity android:name="main.View.Cartography.CartographyActivity"/>
         <activity android:name="main.View.Cartography.MapFragment"/>
-        <activity android:name="main.Controler.QRCodeScanner"/>
+        <activity android:name="main.View.QRCodeScanner"/>
     </application>
 
 </manifest>
