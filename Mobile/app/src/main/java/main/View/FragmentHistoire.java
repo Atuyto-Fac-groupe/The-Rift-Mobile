@@ -31,13 +31,25 @@ import java.util.*;
 
 import static android.app.Activity.RESULT_OK;
 
-
+/**
+ * FragmentHistoire est un fragment qui gère l'affichage des histoires et le scan des QR codes.
+ * Il observe les messages du système et met à jour l'interface utilisateur en conséquence.
+ */
 public class FragmentHistoire extends Fragment{
 
     private FragmentHistoireBinding binding;
     private List<Stories> stories;
     private ActivityResultLauncher<Intent> qrCodeScanLauncher;
 
+
+    /**
+     * Méthode appelée pour créer la vue du fragment.
+     *
+     * @param inflater           Le LayoutInflater utilisé pour gonfler la vue.
+     * @param container          Le conteneur dans lequel la vue sera placée.
+     * @param savedInstanceState L'état précédemment enregistré du fragment, si disponible.
+     * @return La vue du fragment.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -69,6 +81,9 @@ public class FragmentHistoire extends Fragment{
         return binding.getRoot();
     }
 
+    /**
+     * Initialise le launcher pour le scan de QR code.
+     */
     private void initActivityResultLauncher() {
         qrCodeScanLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == RESULT_OK && result.getData() != null) {
@@ -96,6 +111,11 @@ public class FragmentHistoire extends Fragment{
         });
     }
 
+    /**
+     * Affiche un message demandant à l'utilisateur de scanner un QR code.
+     *
+     * @param code Le code qui nécessite un scan de QR code.
+     */
     private void needQRCodeScann(String code){
         this.binding.liHistoires.removeAllViews();
         LayoutInflater inflater = LayoutInflater.from(this.getContext());
@@ -115,6 +135,9 @@ public class FragmentHistoire extends Fragment{
 
     }
 
+    /**
+     * Met à jour les histoires affichées en fonction des messages du serveur.
+     */
     private void updateStoriesByServer() {
 
         List<SystemMessage> systemMessages = App.systemMessages.getValue();
@@ -141,6 +164,11 @@ public class FragmentHistoire extends Fragment{
 
     }
 
+    /**
+     * Met à jour l'affichage d'une histoire.
+     *
+     * @param stories L'histoire à afficher.
+     */
     private void updateHistoire(Stories stories) {
 
         LinearLayout parentLayout = this.binding.liHistoires;
@@ -179,7 +207,12 @@ public class FragmentHistoire extends Fragment{
         });
     }
 
-
+    /**
+     * Crée un FrameLayout qui change de couleur.
+     *
+     * @param colorsString Liste de chaînes représentant les couleurs.
+     * @return Un FrameLayout avec un changement de couleur.
+     */
     private FrameLayout getFrameLayout(List<String> colorsString) {
         List<Integer> colors = new ArrayList<>();
         Timer timer = new Timer();
@@ -195,7 +228,12 @@ public class FragmentHistoire extends Fragment{
         return frameLayout;
     }
 
-
+    /**
+     * Crée un TextView pour afficher un texte d'énigme.
+     *
+     * @param stories Le texte à afficher.
+     * @return Un TextView contenant le texte d'énigme.
+     */
     private TextView setEnigmaText(String stories) {
         TextView histoireTextView = new TextView(this.getContext());
         histoireTextView.setText(stories);
@@ -212,6 +250,13 @@ public class FragmentHistoire extends Fragment{
         return histoireTextView;
     }
 
+    /**
+     * Crée un TextView pour afficher des astuces d'énigme.
+     *
+     * @param stories      L'histoire à laquelle les astuces appartiennent.
+     * @param parentLayout Le LayoutParent dans lequel les astuces seront affichées.
+     * @return Un TextView contenant les astuces d'énigme.
+     */
     private TextView setEnigmaTips(Stories stories, LinearLayout parentLayout) {
         TextView histoireTipsView = new TextView(this.getContext());
         histoireTipsView.setText(stories.getHistoireTips());
@@ -250,6 +295,12 @@ public class FragmentHistoire extends Fragment{
         return histoireTipsView;
     }
 
+    /**
+     * Affiche une image à partir d'une chaîne de caractères représentant l'URL de l'image.
+     *
+     * @param path Le chemin de l'image.
+     * @return Une ImageView contenant l'image.
+     */
     private ImageView showImage(String path) {
         ImageView imageView = new ImageView(this.getContext());
         imageView.setImageDrawable(this.getResourceByName(path));
@@ -272,6 +323,13 @@ public class FragmentHistoire extends Fragment{
         return null;
     }
 
+
+    /**
+     * Transforme un texte en une carte de séquences.
+     *
+     * @param text Le texte à transformer.
+     * @return Une carte représentant les séquences.
+     */
     private Map<String, Object> textToMap(String sequence) {
         Map<String, Object> map = new HashMap<>();
         String[] elements = sequence.split("/");

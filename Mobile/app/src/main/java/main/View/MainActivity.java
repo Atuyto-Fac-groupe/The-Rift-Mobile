@@ -19,6 +19,12 @@ import main.View.Cartography.MapFragment;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 
+
+/**
+ * MainActivity sert de point d'entrée principal pour l'application.
+ * Elle gère la communication par socket, les interactions avec l'interface utilisateur,
+ * et affiche différents fragments en fonction des interactions de l'utilisateur.
+ */
 public class MainActivity extends AppCompatActivity implements SocketObserver {
 
     private MainActivityBinding binding;
@@ -26,13 +32,29 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
     private Gson gson;
     private static MainActivity instance;
 
+
+    /**
+     * Récupère l'instance unique de MainActivity.
+     *
+     * @return L'instance unique de MainActivity.
+     */
     public static MainActivity getInstance() {
         if (instance == null) {
             instance = new MainActivity();
         }
         return instance;
     }
-
+    /**
+     * Appelé lors de la création de l'activité. Cette méthode initialise
+     * l'écouteur de socket, gonfle la mise en page, et configure
+     * la mise en page des onglets avec le fragment associé.
+     *
+     * @param savedInstanceState Si l'activité est en cours de réinitialisation
+     *                           après avoir été précédemment arrêtée,
+     *                           ce Bundle contient les données qu'elle
+     *                           a fournies le plus récemment dans
+     *                           onSaveInstanceState(Bundle).
+     */
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +73,11 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
 
     }
 
-
+    /**
+     * Met à jour le badge de message pour indiquer un statut lu
+     * pour l'onglet actuel. Si l'onglet sélectionné n'est pas l'onglet
+     * d'index 2, le badge sera défini comme invisible.
+     */
     public void setBadgeMessageOnRead(){
         this.runOnUiThread(() -> {
             if (this.binding.tabLayout.getSelectedTabPosition() == 2) {
@@ -68,6 +94,12 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
 
     }
 
+    /**
+     * Appelé lorsqu'un message est reçu via WebSocket.
+     *
+     * @param webSocket Le WebSocket à partir duquel le message est reçu.
+     * @param text Le texte du message reçu.
+     */
     @Override
     public void onMessage(WebSocket webSocket, String text) {
         Message message = gson.fromJson(text, Message.class);

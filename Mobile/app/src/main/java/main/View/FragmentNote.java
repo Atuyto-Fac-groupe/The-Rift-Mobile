@@ -18,12 +18,27 @@ import main.Model.Notes;
 
 import java.util.Objects;
 
+/**
+ * FragmentNote représente un fragment où l'utilisateur peut
+ * afficher et modifier des notes. Ce fragment gère le stockage
+ * et la récupération des notes à l'aide d'ObjectBox.
+ */
 public class FragmentNote extends Fragment {
 
     private FragmentNoteBinding binding;
     private Notes currentNote;
     private Box<Notes> noteBox;
 
+    /**
+     * Appelé pour créer la vue du fragment.
+     * Cette méthode initialise la mise en page et configure les événements
+     * liés à l'édition de notes.
+     *
+     * @param inflater           Le LayoutInflater utilisé pour gonfler la vue.
+     * @param container          Le conteneur dans lequel la vue sera ajoutée.
+     * @param savedInstanceState L'état de l'instance précédemment enregistré.
+     * @return La vue gonflée du fragment.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -70,6 +85,11 @@ public class FragmentNote extends Fragment {
         }).start();
     }
 
+    /**
+     * Sauvegarde ou met à jour la note actuelle dans la base de données.
+     * Cette méthode est exécutée dans un thread séparé pour éviter
+     * de bloquer le thread principal.
+     */
     private void saveOrUpdateNote() {
         String noteText = binding.etNoteText.getText().toString();
 

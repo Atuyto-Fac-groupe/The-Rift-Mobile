@@ -1,8 +1,5 @@
 package main.View.Cartography;
 
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

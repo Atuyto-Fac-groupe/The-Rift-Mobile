@@ -25,11 +25,26 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+/**
+ * FragmentMessage représente un fragment pour afficher les messages.
+ * Il implémente l'interface SocketObserver pour recevoir des mises à jour
+ * via WebSocket et afficher les messages correspondants à l'utilisateur.
+ */
 public class FragmentMessage extends Fragment implements SocketObserver {
 
     private FragmentMessageBinding binding;
     private Gson gson;
 
+    /**
+     * Appelé pour créer la vue du fragment.
+     * Cette méthode initialise la mise en page, configure les observateurs
+     * et met à jour la liste des messages si elle n'est pas vide.
+     *
+     * @param inflater           Le LayoutInflater utilisé pour gonfler la vue.
+     * @param container          Le conteneur dans lequel la vue sera ajoutée.
+     * @param savedInstanceState L'état de l'instance précédemment enregistré.
+     * @return La vue gonflée du fragment.
+     */
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -43,6 +58,13 @@ public class FragmentMessage extends Fragment implements SocketObserver {
         return this.binding.getRoot();
     }
 
+    /**
+     * Met à jour l'affichage des messages dans le fragment.
+     * Cette méthode efface les messages précédents et ajoute
+     * les nouveaux messages au LinearLayout.
+     *
+     * @param messages La liste des messages à afficher.
+     */
     private void updateMessage(List<Message> messages) {
         LinearLayout parentLayout = this.binding.liMessages;
         parentLayout.removeAllViews();
