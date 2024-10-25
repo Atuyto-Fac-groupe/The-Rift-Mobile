@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class App extends Application implements SocketObserver {
 
-    public static String WebSocketUrl = "ws://192.168.1.34:9001/ws?idpersonne=2";
+    public static String WebSocketUrl = "ws://10.6.5.93:9001/ws?idpersonne=2";
 
     public static OnSocketListener socketListener;
 
