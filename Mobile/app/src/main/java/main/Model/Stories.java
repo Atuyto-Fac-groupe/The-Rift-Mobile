@@ -105,11 +105,10 @@ public class Stories {
     public static void initStories(Resources resources){
         Box<Stories> storiesBox = ObjectBox.get().boxFor(Stories.class);
         storiesBox.removeAll();
-        Stories begin = new Stories(resources.getString(R.string.GameStart), "", 1);
         Stories stories1 = new Stories(resources.getString(R.string.Enigma_1), "", 2);
         Stories stories2 = new Stories(resources.getString(R.string.Enigma_2), "", 3);
         Stories stories3 = new Stories(resources.getString(R.string.Enigma_3), "", 4);
-        storiesBox.put(begin, stories1, stories2, stories3);
+        storiesBox.put(stories1, stories2, stories3);
 
     }
 

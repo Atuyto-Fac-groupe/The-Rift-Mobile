@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class App extends Application implements SocketObserver {
 
-    public static String WebSocketUrl = "ws://10.6.5.93:9001/ws?idpersonne=2";
+    public static String WebSocketUrl = "ws://lamb-master-vulture.ngrok-free.app/ws?idpersonne=2";
 
     public static OnSocketListener socketListener;
 
