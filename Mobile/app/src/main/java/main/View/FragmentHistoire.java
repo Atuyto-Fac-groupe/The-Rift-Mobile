@@ -121,6 +121,7 @@ public class FragmentHistoire extends Fragment{
         LayoutInflater inflater = LayoutInflater.from(this.getContext());
         View itemLayout = inflater.inflate(R.layout.qrcode_asking_layout, this.binding.liHistoires, false);
         QrcodeAskingLayoutBinding qrCodeBinding = QrcodeAskingLayoutBinding.bind(itemLayout);
+        qrCodeBinding.roomTextView.setTextColor(Color.WHITE);
         if (getResources().getString(R.string.code_Enigma_2).equals(code)){
             qrCodeBinding.roomTextView.setText("Retrouve moi en salle 108");
         }
@@ -238,7 +239,7 @@ public class FragmentHistoire extends Fragment{
         TextView histoireTextView = new TextView(this.getContext());
         histoireTextView.setText(stories);
         histoireTextView.setTextSize(18);
-        histoireTextView.setTextColor(Color.BLACK);
+        histoireTextView.setTextColor(Color.WHITE);
 
         LinearLayout.LayoutParams textLayoutParams = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,

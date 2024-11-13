@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:background="@drawable/background_fragment"
 >
+
+    <!-- ScrollView and LinearLayout for displaying histoires -->
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_title_fragment"
+            android:text="Messages"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:fontFamily="@font/segoeuithis"
+            android:textSize="18dp"
+            android:id="@+id/tv_titre_fragment"
+            android:padding="10dp"
+    />
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:id="@+id/idSvMain"
             android:layout_above="@+id/idEtMessage"
-            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
-    >
+            android:layout_below="@+id/tv_titre_fragment">
         <LinearLayout
                 android:id="@+id/liMessages"
                 android:layout_width="match_parent"
@@ -30,9 +46,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_send"
+            android:drawableTint="@color/white"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
             android:paddingEnd="15dp"
             android:paddingStart="15dp"
             android:layout_alignParentBottom="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             />
 
 </RelativeLayout>
