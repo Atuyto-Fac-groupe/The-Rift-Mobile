@@ -31,6 +31,6 @@ public class LoginActivity extends AppCompatActivity {
         this.binding = LoginActivityBinding.inflate(getLayoutInflater());
         this.setContentView(this.binding.getRoot());
 
-        this.binding.titleReady.setOnClickListener((v) -> {startActivity(new Intent(LoginActivity.this, MainActivity.class));} );
+        this.binding.btPlay.setOnClickListener((v) -> {startActivity(new Intent(LoginActivity.this, MainActivity.class));} );
     }
 }
