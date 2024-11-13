@@ -34,6 +34,7 @@ public class StapeControler {
         Optional<Stape> stape = stapeRepository.findById(id);
         if (stape.isPresent()) {
             stapeRepository.delete(stape.get());
+            // Retourne l'objet après suppression
             return ResponseEntity.ok(stape.get());
         }
         return ResponseEntity.notFound().build();
