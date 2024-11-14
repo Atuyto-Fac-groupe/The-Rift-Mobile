@@ -2,8 +2,11 @@ package main.View;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -303,17 +306,64 @@ public class FragmentHistoire extends Fragment{
      * @return Une ImageView contenant l'image.
      */
     private ImageView showImage(String path) {
-        ImageView imageView = new ImageView(this.getContext());
+        final ImageView imageView = new ImageView(this.getContext());
         imageView.setImageDrawable(this.getResourceByName(path));
-        LinearLayout.LayoutParams imageLayoutParams = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        );
-//        imageLayoutParams.setMargins(20, 20, 20, 20);
-        imageView.setLayoutParams(imageLayoutParams);
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+        // Utilisation de post() pour attendre que la vue soit attachée avant d'obtenir ses dimensions
+        imageView.post(new Runnable() {
+            @Override
+            public void run() {
+                // Obtenir la largeur et la hauteur du conteneur après que l'image soit attachée
+                int containerWidth = ((ViewGroup) imageView.getParent()).getWidth();
+                int containerHeight = ((ViewGroup) imageView.getParent()).getHeight();
+
+                // Obtenir les dimensions de l'image
+                BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+                Bitmap bitmap = drawable.getBitmap();
+                int imageWidth = bitmap.getWidth();
+                int imageHeight = bitmap.getHeight();
+
+                // Calculer le ratio de l'image
+                float imageRatio = (float) imageWidth / (float) imageHeight;
+                float containerRatio = (float) containerWidth / (float) containerHeight;
+
+                // Déterminer les dimensions ajustées de l'image
+                int newWidth = containerWidth;
+                int newHeight = containerHeight;
+
+                if (imageRatio > containerRatio) {
+                    // Si l'image est plus large que le conteneur, ajuster la hauteur
+                    newHeight = (int) (containerWidth / imageRatio);
+                } else if (imageRatio < containerRatio) {
+                    // Si l'image est plus haute que le conteneur, ajuster la largeur
+                    newWidth = (int) (containerHeight * imageRatio);
+                }
+
+                // Vérifier et ajuster les dimensions pour éviter la coupure
+                if (newWidth > containerWidth) {
+                    newWidth = containerWidth;
+                    newHeight = (int) (newWidth / imageRatio);
+                }
+                if (newHeight > containerHeight) {
+                    newHeight = containerHeight;
+                    newWidth = (int) (newHeight * imageRatio);
+                }
+
+                // Définir les LayoutParams en fonction des nouvelles dimensions
+                LinearLayout.LayoutParams imageLayoutParams = new LinearLayout.LayoutParams(newWidth, newHeight);
+
+                // Centrer l'image dans le conteneur
+                imageLayoutParams.gravity = Gravity.CENTER;
+
+                imageView.setLayoutParams(imageLayoutParams);
+                imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            }
+        });
+
         return imageView;
     }
+
+
 
     @SuppressLint("DiscouragedApi")
     private Drawable getResourceByName(String resourceName) {
