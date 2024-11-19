@@ -7,8 +7,11 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.gson.Gson;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import main.App;
+import main.Model.SystemMessage;
 
 public class QRCodeScanner extends AppCompatActivity {
 
@@ -35,6 +38,7 @@ public class QRCodeScanner extends AppCompatActivity {
             if (result.getContents() != null) {
                 String contenu = result.getContents();
                 resultIntent.putExtra("QR_CODE_CONTENT", contenu);
+
                 setResult(RESULT_OK, resultIntent); // Set the result to OK with the QR code content
                 finish(); // Close the scanner activity
             } else {
