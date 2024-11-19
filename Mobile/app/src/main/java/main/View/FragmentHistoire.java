@@ -22,9 +22,11 @@ import androidx.fragment.app.Fragment;
 import com.example.therift.R;
 import com.example.therift.databinding.FragmentHistoireBinding;
 import com.example.therift.databinding.QrcodeAskingLayoutBinding;
+import com.google.gson.Gson;
 import main.App;
 import main.Controler.ColorChanger;
 import main.Controler.OnQrCodeScan;
+import main.Model.Message;
 import main.Model.Stories;
 import main.Model.SystemMessage;
 import androidx.lifecycle.Observer;
@@ -96,11 +98,15 @@ public class FragmentHistoire extends Fragment{
                         App.roomCode.add(qrCodeContent);
                         this.updateStoriesByServer();
                     }
-                    if (getResources().getString(R.string.code_Enigma_3).equals(qrCodeContent)){
+                    if (getResources().getString(R.string.code_Enigma_2).equals(qrCodeContent) || getResources().getString(R.string.code_Enigma_3).equals(qrCodeContent)){
                         boolean inSuccess = App.roomCode.stream()
                                 .anyMatch(code -> code.equals(getResources().getString(R.string.code_Enigma_2)));
                         if (inSuccess) {
                             App.roomCode.add(qrCodeContent);
+                            SystemMessage systemMessage = new SystemMessage("Android", qrCodeContent);
+                            Gson gson = new Gson();
+                            Message message = new Message(gson.toJson(systemMessage), "2", "1");
+                            App.socketManager.sendMessage(gson.toJson(message));
                             this.updateStoriesByServer();
                         }
                         else {
