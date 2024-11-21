@@ -1,8 +1,10 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android") version "1.9.0"
+    id("org.sonarqube") version "6.0.0.5145"
 //    id("io.objectbox")
 }
+
 android {
     namespace = "com.example.therift"
     compileSdk = 34
@@ -43,8 +45,17 @@ android {
         jvmTarget = "1.8"
     }
 
+
+
 }
 
+sonarqube  {
+    properties {
+        property("sonar.projectKey", "Atuyto-Fac-groupe_The-Rift-Mobile_53065491-1184-4c29-90c8-48ee261aa76f")
+        property("sonar.projectName", "The-Rift-Mobile")
+        property("sonar.sources", "app/src/main/java/main")
+    }
+}
 dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
