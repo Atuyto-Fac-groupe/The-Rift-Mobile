@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/bubble_arrow.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/Purple" /> <!-- Couleur de la flèche -->
+    <size android:width="12dp" android:height="12dp" />
+    <corners android:bottomRightRadius="4dp" /> <!-- Légèrement arrondi pour s'intégrer à la bulle -->
+</shape>

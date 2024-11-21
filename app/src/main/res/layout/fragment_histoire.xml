@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_fragment"
         >
 
     <!-- ScrollView and LinearLayout for displaying histoires -->
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_title_fragment"
+            android:text="Histoire"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:fontFamily="@font/segoeuithis"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:id="@+id/tv_titre_fragment"
+            android:padding="10dp"
+    />
     <ScrollView
             android:id="@+id/idSvMain"
             android:layout_width="match_parent"
@@ -16,7 +30,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:fillViewport="true">
+            android:fillViewport="true"
+            android:layout_below="@+id/tv_titre_fragment">
 
         <LinearLayout
                 android:id="@+id/liHistoires"
@@ -27,4 +42,4 @@
         </LinearLayout>
 
     </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

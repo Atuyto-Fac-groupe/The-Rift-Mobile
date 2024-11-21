@@ -2,6 +2,7 @@ package main.View;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
@@ -24,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Text;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * FragmentMessage représente un fragment pour afficher les messages.
@@ -72,19 +74,27 @@ public class FragmentMessage extends Fragment implements SocketObserver {
             TextView textView = new TextView(this.getContext());
             textView.setText(message.getMessage());
             textView.setTextSize(20);
-            textView.setTextColor(Color.BLACK);
+            textView.setTextColor(Color.WHITE);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
             );
             layoutParams.setMargins(20, 20, 20, 20);
-
+            Drawable drawable = Objects.requireNonNull(getActivity()).getDrawable(R.drawable.bubble_shape);
+            textView.setBackground(drawable);
+            textView.setPadding(10, 10, 20, 10);
             if (message.getFrom().equals("2")) {
+                textView.setGravity(Gravity.END);
+                textView.setTextColor(Color.WHITE);
                 layoutParams.gravity = Gravity.END;
+                drawable.setTint(getActivity().getResources().getColor(R.color.Purple));
+            } else {
+                textView.setGravity(Gravity.START);
+                textView.setTextColor(Color.BLACK);
+                layoutParams.gravity = Gravity.START;
+                drawable.setTint(Color.WHITE);
             }
-            else {
-               layoutParams.gravity = Gravity.START;
-            }
+
             textView.setLayoutParams(layoutParams);
             parentLayout.addView(textView);
         }

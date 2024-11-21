@@ -16,10 +16,13 @@ import main.Controler.SocketObserver;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class App extends Application implements SocketObserver {
 
-    public static String WebSocketUrl = "ws://lamb-master-vulture.ngrok-free.app:9001/ws?idpersonne=2";
+    public static String WebSocketUrl = "ws://lamb-master-vulture.ngrok-free.app/ws?idpersonne=2";
 
     public static OnSocketListener socketListener;
 
@@ -35,6 +38,7 @@ public class App extends Application implements SocketObserver {
     public static final int  NBENIGMA = 3;
 
     public static List<String> roomCode = new ArrayList<>();
+    private ScheduledExecutorService scheduler;
 
     @Override
     public void onCreate() {
@@ -46,7 +50,7 @@ public class App extends Application implements SocketObserver {
         player = new Player();
         systemMessages = new MutableLiveData<>(new ArrayList<>());
         ObjectBox.init(this);
-
+        scheduler = Executors.newScheduledThreadPool(1);
     }
 
 
@@ -54,6 +58,7 @@ public class App extends Application implements SocketObserver {
     @Override
     public void onOpen(WebSocket webSocket, Response response) {
         Log.d("Socket","Connexion etablie");
+        this.startKeepAlive();
     }
 
     public void onMessage(WebSocket webSocket, String text) {
@@ -69,17 +74,46 @@ public class App extends Application implements SocketObserver {
         } catch (JsonSyntaxException e) {
             Log.d("Socket", "Json syntax error");
         }
-        Log.d("Socket", text);
+        Log.d("Socket", "Message : " + text);
     }
 
     @Override
     public void onFailure(WebSocket webSocket, Throwable t, Response response) {
-        Log.d("test", t.toString());
+        Log.d("Socket", "OnFailed : " + t.toString());
 
     }
 
     @Override
     public void onClosing(WebSocket webSocket, int code, String reason) {
-        Log.d("Socket",reason);
+        Log.d("Socket", "Closing : " + reason);
+    }
+
+    public void startKeepAlive() {
+        // Programme un ping toutes les 30 secondes
+        scheduler.scheduleWithFixedDelay(this::sendPing, 0, 30, TimeUnit.SECONDS);
+    }
+
+    // Méthode pour envoyer un message Ping
+    private void sendPing() {
+        if (socketManager != null) {
+            try {
+                Message message = new Message("Ping", "0", "0");
+                Gson gson = new Gson();
+                Log.d("Socket", "Ping envoyé");
+                socketManager.sendMessage(gson.toJson(message));
+            } catch (Exception e) {
+                Log.d("Socket", "Erreur lors de l'envoi du ping: " + e.toString());
+            }
+        } else {
+            Log.d("Socket", "Le socket n'est pas connecté.");
+        }
+    }
+
+    // Pour arrêter le ping quand ce n'est plus nécessaire
+    public void stopKeepAlive() {
+        if (scheduler != null && !scheduler.isShutdown()) {
+            scheduler.shutdown(); // Arrête les pings périodiques
+            Log.d("Socket", "Pings arrêtés.");
+        }
     }
 }

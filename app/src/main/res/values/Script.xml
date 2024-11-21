@@ -2,7 +2,19 @@
 <resources>
 
 
-    <string name="Enigma_1">une phrase /picture:egnigma1/ l\'image est belle</string>
+    <string name="Enigma_1"><![CDATA[
+    Lundi 11 septembre 2024, 7h00,
+    Campus universitaire de Maubeuge.
+
+    Suite à un violent orage, une coupure générale a eu lieu dans tout le campus. La mission de nos deux héros est donc de rétablir le courant ainsi que de relancer les serveurs de l\'université.
+    Une fois l\'électricité revenue, ils se rendent à la salle des serveurs. "JOUEUR CASQUE" ouvre la porte de la salle et se fait soudainement aspirer par une puissante lumière bleue et disparaît.
+    "JOUEUR TEL", paniqué, recule et entend brièvement la voix de "JOUEUR CASQUE" au loin, celle-ci résonne comme un écho l\'appelant au secours.
+    "JOUEUR CASQUE" se rend compte que son ami n\'est plus derrière lui, la pièce semble être la même mais quelques détails changent comme, tout à coup, une voix mystérieuse prit la parole.
+     /picture:puzzle/
+
+    ]]></string>
+
+
 
     <string name="Enigma_2">/sequential:red, green, blue, black/</string>
 
