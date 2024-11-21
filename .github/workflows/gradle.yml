@@ -15,10 +15,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up JDK 17
+      - name: Set up JDK 20
         uses: actions/setup-java@v4
         with:
-          java-version: 17
+          java-version: 20
           distribution: 'zulu'
 
       - name: Cache SonarQube packages
@@ -46,4 +46,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: ./gradlew build sonar --info
+        run: ./gradlew assembleDebug sonar --info
