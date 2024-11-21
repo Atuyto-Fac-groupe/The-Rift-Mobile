@@ -58,9 +58,7 @@ sonarqube  {
         property("sonar.login", "sqb_867bee4e18a8cb796b4d0dab3038b82f752e19ec")
     }
 }
-tasks.withType<JavaCompile> {
-    options.incremental = false
-}
+
 dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
