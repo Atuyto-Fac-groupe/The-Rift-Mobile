@@ -57,6 +57,7 @@ sonarqube  {
         property("sonar.sources", "src/main/java/main")
         property("sonar.host.url", "https://condor-funky-completely.ngrok-free.app")
         property("sonar.login", "sqp_adc6e6441eb48fbf9894a71a1e42d2a38b80d234")
+        property("sonar.java.binaries", file("build/intermediates/javac/debug/classes/main"))
     }
 }
 
