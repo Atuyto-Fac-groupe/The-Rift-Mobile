@@ -80,7 +80,7 @@ public class FragmentMessage extends Fragment implements SocketObserver {
                     ViewGroup.LayoutParams.WRAP_CONTENT
             );
             layoutParams.setMargins(20, 20, 20, 20);
-            Drawable drawable = Objects.requireNonNull(getActivity()).getDrawable(R.drawable.bubble_shape);
+            Drawable drawable = getActivity().getDrawable(R.drawable.bubble_shape);
             textView.setBackground(drawable);
             textView.setPadding(10, 10, 20, 10);
             if (message.getFrom().equals("2")) {

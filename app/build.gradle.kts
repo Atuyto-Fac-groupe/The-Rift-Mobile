@@ -1,8 +1,8 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android") version "1.9.0"
+    //id("org.jetbrains.kotlin.android") version "1.9.0"
     id("org.sonarqube") version "5.1.0.4882"
-//    id("io.objectbox")
+    id("io.objectbox")
 }
 
 android {
@@ -41,9 +41,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
+    lint {
+        baseline = file("lint-baseline.xml")
     }
+
+//    kotlinOptions {
+//        jvmTarget = "1.8"
+//    }
 
 
 
@@ -69,11 +73,11 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation(libs.okhttp)
     implementation(libs.gson)
-    releaseImplementation(libs.objectbox.java)
-    debugImplementation(libs.objectbox.android.objectbrowser)
+    //releaseImplementation(libs.objectbox.java)
+    //debugImplementation(libs.objectbox.android.objectbrowser)
     implementation(libs.zxing.android.embedded)
     implementation(libs.core)
 
 }
 
-apply(plugin = "io.objectbox")
+//apply(plugin = "io.objectbox")
