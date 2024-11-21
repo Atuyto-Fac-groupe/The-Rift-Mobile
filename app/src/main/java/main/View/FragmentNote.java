@@ -80,7 +80,7 @@ public class FragmentNote extends Fragment {
         new Thread(() -> {
             currentNote = noteBox.get(1);
             if (currentNote != null) {
-                Objects.requireNonNull(getActivity()).runOnUiThread(() -> binding.etNoteText.setText(currentNote.getContainerText()));
+                getActivity().runOnUiThread(() -> binding.etNoteText.setText(currentNote.getContainerText()));
             }
         }).start();
     }

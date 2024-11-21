@@ -59,10 +59,10 @@ public class FragmentHistoire extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.binding = FragmentHistoireBinding.inflate(getLayoutInflater());
-        Stories.initStories(Objects.requireNonNull(this.getContext()).getResources());
+        Stories.initStories(this.getResources());
         this.stories = Stories.getStories();
         this.initActivityResultLauncher();
-        App.systemMessages.observe(this, new Observer<List<SystemMessage>>() {
+        App.systemMessages.observe(getViewLifecycleOwner(), new Observer<List<SystemMessage>>() {
 
             @Override
             public void onChanged(List<SystemMessage> systemMessages) {
@@ -373,7 +373,7 @@ public class FragmentHistoire extends Fragment{
 
     @SuppressLint("DiscouragedApi")
     private Drawable getResourceByName(String resourceName) {
-        int resourceId = getResources().getIdentifier(resourceName, "drawable", Objects.requireNonNull(getContext()).getPackageName());
+        int resourceId = getResources().getIdentifier(resourceName, "drawable", this.getActivity().getPackageName());
         if (resourceId != 0) {
             return ContextCompat.getDrawable(getContext(), resourceId);
         }
