@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/bubble_with_arrow.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Bulle principale -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/Purple" />
+            <corners android:radius="10dp"/>
+        </shape>
+    </item>
+
+</layer-list>

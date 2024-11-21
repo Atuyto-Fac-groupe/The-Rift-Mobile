@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.therift.R;
 import com.example.therift.databinding.MainActivityBinding;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import main.App;
+import main.Controler.NavControler;
 import main.Controler.SocketObserver;
 import main.Controler.TableControler;
 import main.Model.Message;
@@ -18,6 +20,8 @@ import main.View.Cartography.CartographyActivity;
 import main.View.Cartography.MapFragment;
 import okhttp3.Response;
 import okhttp3.WebSocket;
+
+import java.util.Objects;
 
 
 /**
@@ -28,7 +32,7 @@ import okhttp3.WebSocket;
 public class MainActivity extends AppCompatActivity implements SocketObserver {
 
     private MainActivityBinding binding;
-    private TableControler tableControler;
+    private NavControler navControler;
     private Gson gson;
     private static MainActivity instance;
 
@@ -63,14 +67,25 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
         this.gson = new Gson();
         this.binding = MainActivityBinding.inflate(getLayoutInflater());
         this.setContentView(this.binding.getRoot());
-        this.tableControler = new TableControler(this.binding.idFragContainer, this);
-        this.binding.tabLayout.addOnTabSelectedListener( this.tableControler);
-
+//        this.tableControler = new TableControler(this.binding.idFragContainer, this);
+//        this.binding.tabLayout.addOnTabSelectedListener( this.tableControler);
+        this.binding.tvTitleWindow.setText("HISTOIRE");
+        this.binding.btHistoire.setBackground(getDrawable(R.drawable.background_buton_navigation_ative));
+        this.binding.btHistoire.setImageDrawable(getDrawable(R.drawable.ic_key_white));
+        this.navControler = new NavControler(this.binding.idFragContainer, this.binding,this);
+        this.binding.btMessages.setOnClickListener(this.navControler);
+        this.binding.btNote.setOnClickListener(this.navControler);
+        this.binding.btHistoire.setOnClickListener(this.navControler);
         this.getSupportFragmentManager().beginTransaction()
                 .replace(this.binding.idFragContainer.getId(), new FragmentHistoire())
                 .addToBackStack(this.binding.idFragContainer.getTransitionName())
                 .commit();
-
+        this.binding.imMap.setOnClickListener((v -> {
+            if (this.binding.imMap.getDrawable().getConstantState().equals(getDrawable(R.drawable.first_stage).getConstantState())){
+                this.binding.imMap.setImageDrawable(getDrawable(R.drawable.second_stage));
+            }
+            else this.binding.imMap.setImageDrawable(getDrawable(R.drawable.first_stage));
+        }));
     }
 
     /**
@@ -79,14 +94,14 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
      * d'index 2, le badge sera défini comme invisible.
      */
     public void setBadgeMessageOnRead(){
-        this.runOnUiThread(() -> {
-            if (this.binding.tabLayout.getSelectedTabPosition() == 2) {
-                TabLayout.Tab tab = this.binding.tabLayout.getTabAt(2);
-                BadgeDrawable badgeDrawable = tab.getOrCreateBadge();
-                badgeDrawable.setVisible(false);
-
-            }
-        });
+//        this.runOnUiThread(() -> {
+//            if (this.binding.tabLayout.getSelectedTabPosition() == 2) {
+//                TabLayout.Tab tab = this.binding.tabLayout.getTabAt(2);
+//                BadgeDrawable badgeDrawable = tab.getOrCreateBadge();
+//                badgeDrawable.setVisible(false);
+//
+//            }
+//        });
     }
 
     @Override
@@ -103,21 +118,24 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
     @Override
     public void onMessage(WebSocket webSocket, String text) {
         Message message = gson.fromJson(text, Message.class);
+        if (Objects.equals(message.getFrom(), "0") || Objects.equals(message.getTo(), "0")) {
+            return;
+        }
         try {
             SystemMessage systemMessage = gson.fromJson(message.getMessage(), SystemMessage.class);
         } catch (JsonSyntaxException e) {
             App.player.add(message);
-            this.runOnUiThread(() -> {
-                if (this.binding.tabLayout.getSelectedTabPosition() != 2) {
-                    TabLayout.Tab tab = this.binding.tabLayout.getTabAt(2);
-                    BadgeDrawable badgeDrawable = tab.getOrCreateBadge();
-                    badgeDrawable.setVisible(true);
-                    message.setSee(false);
-                    badgeDrawable.setNumber(App.player.getNotSee());
-                }
-                else message.setSee(true);
-
-            });
+//            this.runOnUiThread(() -> {
+//                if (this.binding.tabLayout.getSelectedTabPosition() != 2) {
+//                    TabLayout.Tab tab = this.binding.tabLayout.getTabAt(2);
+//                    BadgeDrawable badgeDrawable = tab.getOrCreateBadge();
+//                    badgeDrawable.setVisible(true);
+//                    message.setSee(false);
+//                    badgeDrawable.setNumber(App.player.getNotSee());
+//                }
+//                else message.setSee(true);
+//
+//            });
         }
 
     }
