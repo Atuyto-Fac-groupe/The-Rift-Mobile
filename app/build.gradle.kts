@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android") version "1.9.0"
-    id("org.sonarqube") version "6.0.0.5145"
+    id("org.sonarqube") version "5.1.0.4882"
 //    id("io.objectbox")
 }
 
