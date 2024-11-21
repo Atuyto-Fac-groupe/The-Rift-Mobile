@@ -54,7 +54,7 @@ sonarqube  {
         property("sonar.projectKey", "Atuyto-Fac-groupe_The-Rift-Mobile_53065491-1184-4c29-90c8-48ee261aa76f")
         property("sonar.projectName", "The-Rift-Mobile")
         property("sonar.organization", "Atuyto-Fac-groupe")
-        property("sonar.sources", "app/src/main/java/main")
+        property("sonar.sources", "src/main/java/main")
         property("sonar.host.url", "https://condor-funky-completely.ngrok-free.app")
         property("sonar.login", "sqp_adc6e6441eb48fbf9894a71a1e42d2a38b80d234")
     }
