@@ -54,7 +54,12 @@ sonarqube  {
         property("sonar.projectKey", "Atuyto-Fac-groupe_The-Rift-Mobile_53065491-1184-4c29-90c8-48ee261aa76f")
         property("sonar.projectName", "The-Rift-Mobile")
         property("sonar.sources", "app/src/main/java/main")
+        property("sonar.host.url", "https://condor-funky-completely.ngrok-free.app")
+        property("sonar.login", "sqb_867bee4e18a8cb796b4d0dab3038b82f752e19ec")
     }
+}
+tasks.withType<JavaCompile> {
+    options.incremental = false
 }
 dependencies {
     implementation(libs.appcompat)
@@ -65,7 +70,7 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.gson)
     releaseImplementation(libs.objectbox.java)
-    debugImplementation("io.objectbox:objectbox-android-objectbrowser:4.0.3")
+    debugImplementation(libs.objectbox.android.objectbrowser)
     implementation(libs.zxing.android.embedded)
     implementation(libs.core)
 
