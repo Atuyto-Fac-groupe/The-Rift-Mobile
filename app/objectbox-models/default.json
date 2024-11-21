@@ -1,0 +1,206 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:6006421328036598700",
+      "lastPropertyId": "4:798250665310078349",
+      "name": "Calibration",
+      "properties": [
+        {
+          "id": "1:6856769061588268032",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4725990175014296992",
+          "name": "x",
+          "type": 8
+        },
+        {
+          "id": "3:2416145118114452669",
+          "name": "y",
+          "type": 8
+        },
+        {
+          "id": "4:798250665310078349",
+          "name": "routerId",
+          "indexId": "1:7592145582346430153",
+          "type": 11,
+          "flags": 520,
+          "relationTarget": "Router"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:8386414680353525297",
+      "lastPropertyId": "4:3400411376033561221",
+      "name": "Cell",
+      "properties": [
+        {
+          "id": "1:4472112266655065742",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:7033805299390711270",
+          "name": "row",
+          "type": 5
+        },
+        {
+          "id": "3:8411388515480994567",
+          "name": "col",
+          "type": 5
+        },
+        {
+          "id": "4:3400411376033561221",
+          "name": "gridpMapId",
+          "indexId": "2:8497748122942316021",
+          "type": 11,
+          "flags": 520,
+          "relationTarget": "GridMap"
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:8604355783625902205",
+          "name": "calibrations",
+          "targetId": "1:6006421328036598700"
+        }
+      ]
+    },
+    {
+      "id": "3:1315904062419203578",
+      "lastPropertyId": "3:313347447471917334",
+      "name": "GridMap",
+      "properties": [
+        {
+          "id": "1:5392395323614588213",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6404306655480563266",
+          "name": "nbRow",
+          "type": 5
+        },
+        {
+          "id": "3:313347447471917334",
+          "name": "nbCol",
+          "type": 5
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:4039538790992534100",
+      "lastPropertyId": "2:3460808451795971494",
+      "name": "Notes",
+      "properties": [
+        {
+          "id": "1:7528991129450192900",
+          "name": "idNotes",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3460808451795971494",
+          "name": "containerText",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:4843978113608339043",
+      "lastPropertyId": "5:2975330097679730137",
+      "name": "Router",
+      "properties": [
+        {
+          "id": "1:6067372430871903219",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5027822904996350090",
+          "name": "bssid",
+          "indexId": "3:2066713830149702433",
+          "type": 9,
+          "flags": 2080
+        },
+        {
+          "id": "3:7124412600124043463",
+          "name": "level",
+          "type": 5
+        },
+        {
+          "id": "4:787192141130082069",
+          "name": "x",
+          "type": 8
+        },
+        {
+          "id": "5:2975330097679730137",
+          "name": "y",
+          "type": 8
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "6:3757835864234606423",
+      "lastPropertyId": "6:5734236809150035082",
+      "name": "Stories",
+      "properties": [
+        {
+          "id": "1:6235387531421337860",
+          "name": "ind",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5235453102620308579",
+          "name": "histoireText",
+          "type": 9
+        },
+        {
+          "id": "3:7042816153516212990",
+          "name": "histoireTips",
+          "type": 9
+        },
+        {
+          "id": "4:6737697000139399285",
+          "name": "displayed",
+          "type": 1
+        },
+        {
+          "id": "5:7676438003828502331",
+          "name": "noButton",
+          "type": 1
+        },
+        {
+          "id": "6:5734236809150035082",
+          "name": "order",
+          "type": 5
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "6:3757835864234606423",
+  "lastIndexId": "3:2066713830149702433",
+  "lastRelationId": "1:8604355783625902205",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
