@@ -1,55 +1,253 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca2f9564-e16e-475b-9271-fe8e2b35bc6b" name="Changes" comment="">
+    <list default="true" id="63f9a70f-8480-4eec-9a96-ab5c337c32dc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/The-Rift.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Quest/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Quest/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Quest/.idea/Quest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Quest/.idea/Quest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/.idea/deploymentTargetSelector.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/.idea/kotlinc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/androidTest/java/therift/example/therift/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/ic_launcher-playstore.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Controler/CartographieControler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Controler/ColorChanger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Controler/MapControler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Controler/MessageControler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Controler/OnQrCodeScan.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Controler/SocketObserver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Controler/TableControler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/BDD/ObjectBox.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/Notes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/OnSocketListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/SocketManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/SocketObservable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/Stories.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/SystemMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/TypePlayer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/cartography/Calibration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/cartography/Cell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/cartography/GridMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/cartography/Point.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/Model/cartography/Router.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/View/Cartography/CartographyActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/View/Cartography/FloorPlanView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/View/Cartography/MapFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/View/FloorPlanView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/View/FragmentHistoire.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/View/FragmentMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/View/FragmentNote.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/View/GridImageView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/View/LoadingActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/View/LoginActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/View/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/java/main/View/QRCodeScanner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/background_edittext.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/background_input_menu.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/background_login_gradient.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/egnigma1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/ic_close.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/ic_send.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/ic_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/loading.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/logo_the_rift.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/qr_code_scanner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/stqge1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/font/inconsolata.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/font/inter.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/font/ngutang_gong.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/font/october_crow.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/cartographie_activity.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/fragment_histoire.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/fragment_message.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/fragment_note.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/loading_activity.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/login_activity.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/main_activity.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/parametre_activity.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/qrcode_asking_layout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/test_activity.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-hdpi/ic_launcher_background.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-mdpi/ic_launcher_background.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xhdpi/ic_launcher_background.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xxhdpi/ic_launcher_background.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xxxhdpi/ic_launcher_background.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/values/CodeEnigme.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/values/Script.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/values/themes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/xml/backup_rules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/main/res/xml/network_security_config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/app/src/test/java/therift/example/therift/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/gradle/libs.versions.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mobile/settings.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdd/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdd/.idea/bdd.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdd/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdd/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdd/.idea/vcs.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=R3CW50CTWNB)]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="The Rift" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="2mpuvIvf1PP4kt96atBbWaKpDVT" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2p9a1xs8aqgJetVHZsWncEN8gFO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "Android App.app.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/emeli/Documents/BUT/BUT3/SAE/theRift",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/alexa/Desktop/persoProject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="The_Rift.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ca2f9564-e16e-475b-9271-fe8e2b35bc6b" name="Changes" comment="" />
-      <created>1727786067646</created>
+      <changelist id="63f9a70f-8480-4eec-9a96-ab5c337c32dc" name="Changes" comment="" />
+      <created>1732180534469</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1727786067646</updated>
-      <workItem from="1727786068926" duration="3000" />
-      <workItem from="1727787858589" duration="61000" />
-      <workItem from="1727787923988" duration="77000" />
-      <workItem from="1729578283345" duration="489000" />
+      <updated>1732180534469</updated>
+      <workItem from="1732180536024" duration="300000" />
     </task>
     <servers />
   </component>
