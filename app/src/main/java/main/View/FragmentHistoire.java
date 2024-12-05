@@ -74,7 +74,7 @@ public class FragmentHistoire extends Fragment{
                         needQRCodeScann(lastSystemMessage.getCode());
                     }
                     else {
-                        updateStoriesByServer();
+                        //updateStoriesByServer();
                     }
                 }
                 else updateStoriesByServer();
@@ -96,7 +96,7 @@ public class FragmentHistoire extends Fragment{
                 if (qrCodeContent != null) {
                     if (getResources().getString(R.string.code_Enigma_2).equals(qrCodeContent)){
                         App.roomCode.add(qrCodeContent);
-                        this.updateStoriesByServer();
+                        //this.updateStoriesByServer();
                     }
                     if (getResources().getString(R.string.code_Enigma_2).equals(qrCodeContent) || getResources().getString(R.string.code_Enigma_3).equals(qrCodeContent)){
                         boolean inSuccess = App.roomCode.stream()
@@ -158,6 +158,7 @@ public class FragmentHistoire extends Fragment{
         if(systemMessages == null || systemMessages.isEmpty()) {return;}
         for (SystemMessage systemMessage : systemMessages) {
 
+            if (systemMessage.getTitre() != null && systemMessage.getTitre().equals("Android")) continue;
             Map<String, Integer> codeToOrderMap = new HashMap<>();
             codeToOrderMap.put(getResources().getString(R.string.code_Enigma_2), 3);
             codeToOrderMap.put(getResources().getString(R.string.code_Enigma_3), 4);
