@@ -10,15 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97a06b1f-d52b-43e6-9ce9-a588788de743" name="Changes" comment="ajout de sonarqube dans gradle">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/main/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=R3CW50CTWNB)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -52,7 +53,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Atuyto-Fac-groupe/The-Rift-Mobile&quot;,
+    &quot;url&quot;: &quot;https://github.com/Atuyto-Fac-groupe/The-Rift-Mobile.git&quot;,
     &quot;accountId&quot;: &quot;42945660-2860-4f54-85dc-021a491311c7&quot;
   }
 }</component>
@@ -140,6 +141,10 @@
       <updated>1732181550744</updated>
       <workItem from="1732181552137" duration="29000" />
       <workItem from="1732194045121" duration="4697000" />
+      <workItem from="1733128569942" duration="610000" />
+      <workItem from="1733214126630" duration="78000" />
+      <workItem from="1733306101091" duration="1947000" />
+      <workItem from="1733382409268" duration="40000" />
     </task>
     <task id="LOCAL-00001" summary="ajout de sonarqube dans gradle">
       <option name="closed" value="true" />
