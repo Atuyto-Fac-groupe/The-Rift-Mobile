@@ -30,7 +30,7 @@ public class App extends Application implements SocketObserver {
 
     public static Player player;
 
-    public static final int ROW = 20;
+    public static final int ROW = 25;
     public static final int COL = 20;
 
     public static MutableLiveData<List<SystemMessage>> systemMessages;
