@@ -73,9 +73,6 @@ public class FragmentHistoire extends Fragment{
                     if (!inSuccess) {
                         needQRCodeScann(lastSystemMessage.getCode());
                     }
-                    else {
-                        //updateStoriesByServer();
-                    }
                 }
                 else updateStoriesByServer();
 
@@ -96,7 +93,6 @@ public class FragmentHistoire extends Fragment{
                 if (qrCodeContent != null) {
                     if (getResources().getString(R.string.code_Enigma_2).equals(qrCodeContent)){
                         App.roomCode.add(qrCodeContent);
-                        //this.updateStoriesByServer();
                     }
                     if (getResources().getString(R.string.code_Enigma_2).equals(qrCodeContent) || getResources().getString(R.string.code_Enigma_3).equals(qrCodeContent)){
                         boolean inSuccess = App.roomCode.stream()
