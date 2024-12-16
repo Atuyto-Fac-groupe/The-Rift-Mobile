@@ -60,7 +60,7 @@ sonarqube  {
         property("sonar.organization", "Atuyto-Fac-groupe")
         property("sonar.sources", "src/main/java/main")
         property("sonar.host.url", "https://condor-funky-completely.ngrok-free.app")
-        property("sonar.login", "squ_69f986dd2782786dec9596bfd09b1de4c9dd6a76")
+        property("sonar.token", "squ_69f986dd2782786dec9596bfd09b1de4c9dd6a76")
         property("sonar.java.binaries", file("build/intermediates/classes/debug"))
     }
 }
