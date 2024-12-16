@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97a06b1f-d52b-43e6-9ce9-a588788de743" name="Changes" comment="Résolution du bug d'image lors du passage des enigmes" />
+    <list default="true" id="97a06b1f-d52b-43e6-9ce9-a588788de743" name="Changes" comment="Résolution du bug d'image lors du passage des enigmes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +49,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -171,7 +174,7 @@
       <workItem from="1733913934178" duration="3000" />
       <workItem from="1733918401983" duration="3000" />
       <workItem from="1734336953101" duration="118000" />
-      <workItem from="1734339356416" duration="3139000" />
+      <workItem from="1734339356416" duration="3821000" />
     </task>
     <task id="LOCAL-00001" summary="ajout de sonarqube dans gradle">
       <option name="closed" value="true" />
@@ -293,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734351106991</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Résolution du bug d'image lors du passage des enigmes">
+      <option name="closed" value="true" />
+      <created>1734351350926</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1734351350926</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
