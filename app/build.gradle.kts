@@ -3,6 +3,7 @@ plugins {
     //id("org.jetbrains.kotlin.android") version "1.9.0"
     id("org.sonarqube") version "5.1.0.4882"
     id("io.objectbox")
+    id("jacoco")
 }
 
 android {
@@ -63,6 +64,30 @@ sonarqube  {
         property("sonar.token", "squ_69f986dd2782786dec9596bfd09b1de4c9dd6a76")
         property("sonar.java.binaries", file("build/intermediates/classes/debug"))
     }
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+    finalizedBy("jacocoTestReport") // Générez le rapport après les tests
+}
+
+tasks.register("jacocoTestReport", JacocoReport::class) {
+    dependsOn("testDebugUnitTest") // Exécutez les tests avant de générer le rapport
+
+    reports {
+        xml.required.set(true) // Fichier XML pour SonarQube
+        html.required.set(true) // Rapport HTML pour visualisation locale
+        csv.required.set(false)
+    }
+
+    // Définir les sources et les classes pour le rapport
+    val fileFilter = listOf("**/R.class", "**/R$*.class", "**/BuildConfig.*", "**/Manifest*.*", "**/*Test*.*")
+    val debugTree = fileTree(mapOf("dir" to "$buildDir/tmp/kotlin-classes/debug", "excludes" to fileFilter))
+    val mainSrc = "$projectDir/src/main/java"
+
+    sourceDirectories.setFrom(files(listOf(mainSrc)))
+    classDirectories.setFrom(files(listOf(debugTree)))
+    executionData.setFrom(fileTree(mapOf("dir" to "$buildDir", "includes" to listOf("**/*.exec", "**/*.ec"))))
 }
 
 dependencies {
