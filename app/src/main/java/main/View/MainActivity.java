@@ -16,8 +16,6 @@ import main.Controler.SocketObserver;
 import main.Controler.TableControler;
 import main.Model.Message;
 import main.Model.SystemMessage;
-import main.View.Cartography.CartographyActivity;
-import main.View.Cartography.MapFragment;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 

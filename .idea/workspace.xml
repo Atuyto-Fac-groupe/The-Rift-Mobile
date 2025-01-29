@@ -11,14 +11,26 @@
   <component name="ChangeListManager">
     <list default="true" id="97a06b1f-d52b-43e6-9ce9-a588788de743" name="Changes" comment="ajout de sonarqube dans gradle">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/objectbox-models/default.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/objectbox-models/default.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/Controler/CartographieControler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/Controler/MapControler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/Model/cartography/Calibration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/Model/cartography/Cell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/Model/cartography/GridMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/Model/cartography/Point.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/Model/cartography/Router.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/View/Cartography/CartographyActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/View/Cartography/MapFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/View/FragmentHistoire.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/main/View/FragmentHistoire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/View/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/main/View/MainActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=R3CW50CTWNB)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -56,6 +68,9 @@
     &quot;accountId&quot;: &quot;42945660-2860-4f54-85dc-021a491311c7&quot;
   }
 }</component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -65,24 +80,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/alexa/Desktop/persoProject&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/alexa/Desktop/persoProject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Global Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="The_Rift_Mobile.app.main" />
@@ -139,7 +154,11 @@
       <option name="presentableId" value="Default" />
       <updated>1732181550744</updated>
       <workItem from="1732181552137" duration="29000" />
-      <workItem from="1732194045121" duration="4697000" />
+      <workItem from="1732194045121" duration="5475000" />
+      <workItem from="1733125289263" duration="16000" />
+      <workItem from="1733301620517" duration="252000" />
+      <workItem from="1737965235485" duration="758000" />
+      <workItem from="1738135046146" duration="2669000" />
     </task>
     <task id="LOCAL-00001" summary="ajout de sonarqube dans gradle">
       <option name="closed" value="true" />
@@ -221,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732200086116</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="ajout de sonarqube dans gradle">
+      <option name="closed" value="true" />
+      <created>1732200587618</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1732200587618</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,5 +269,9 @@
     <MESSAGE value="modif git" />
     <MESSAGE value="ajout de sonarqube dans gradle" />
     <option name="LAST_COMMIT_MESSAGE" value="ajout de sonarqube dans gradle" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

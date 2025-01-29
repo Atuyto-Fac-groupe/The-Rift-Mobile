@@ -150,6 +150,8 @@ public class FragmentHistoire extends Fragment{
      */
     private void updateStoriesByServer() {
 
+
+
         List<SystemMessage> systemMessages = App.systemMessages.getValue();
         this.binding.liHistoires.removeAllViews();
         this.stories.stream()
