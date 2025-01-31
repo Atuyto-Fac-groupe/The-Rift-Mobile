@@ -2,6 +2,10 @@ package main.View;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.therift.R;
@@ -78,12 +82,22 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
                 .replace(this.binding.idFragContainer.getId(), new FragmentHistoire())
                 .addToBackStack(this.binding.idFragContainer.getTransitionName())
                 .commit();
-        this.binding.imMap.setOnClickListener((v -> {
-            if (this.binding.imMap.getDrawable().getConstantState().equals(getDrawable(R.drawable.first_stage).getConstantState())){
-                this.binding.imMap.setImageDrawable(getDrawable(R.drawable.second_stage));
+
+        TextView firstStageText = findViewById(R.id.first_stage);
+        TextView secondStageText = findViewById(R.id.second_stage);
+        ImageView imMap = findViewById(R.id.im_map);
+
+        imMap.setOnClickListener(v -> {
+            if (imMap.getDrawable().getConstantState().equals(getDrawable(R.drawable.first_stage).getConstantState())) {
+                imMap.setImageDrawable(getDrawable(R.drawable.second_stage));
+                firstStageText.setVisibility(View.GONE);
+                secondStageText.setVisibility(View.VISIBLE);
+            } else {
+                imMap.setImageDrawable(getDrawable(R.drawable.first_stage));
+                firstStageText.setVisibility(View.VISIBLE);
+                secondStageText.setVisibility(View.GONE);
             }
-            else this.binding.imMap.setImageDrawable(getDrawable(R.drawable.first_stage));
-        }));
+        });
     }
 
     /**
