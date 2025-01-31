@@ -1,6 +1,5 @@
 package main.View;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,14 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.therift.R;
 import com.example.therift.databinding.MainActivityBinding;
-import com.google.android.material.badge.BadgeDrawable;
-import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import main.App;
 import main.Controler.NavControler;
 import main.Controler.SocketObserver;
-import main.Controler.TableControler;
 import main.Model.Message;
 import main.Model.SystemMessage;
 import okhttp3.Response;
@@ -88,14 +84,14 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
         ImageView imMap = findViewById(R.id.im_map);
 
         imMap.setOnClickListener(v -> {
-            if (imMap.getDrawable().getConstantState().equals(getDrawable(R.drawable.first_stage).getConstantState())) {
-                imMap.setImageDrawable(getDrawable(R.drawable.second_stage));
-                firstStageText.setVisibility(View.GONE);
-                secondStageText.setVisibility(View.VISIBLE);
-            } else {
+            if (imMap.getDrawable().getConstantState().equals(getDrawable(R.drawable.second_stage).getConstantState())) {
                 imMap.setImageDrawable(getDrawable(R.drawable.first_stage));
                 firstStageText.setVisibility(View.VISIBLE);
                 secondStageText.setVisibility(View.GONE);
+            } else {
+                imMap.setImageDrawable(getDrawable(R.drawable.second_stage));
+                firstStageText.setVisibility(View.GONE);
+                secondStageText.setVisibility(View.VISIBLE);
             }
         });
     }
