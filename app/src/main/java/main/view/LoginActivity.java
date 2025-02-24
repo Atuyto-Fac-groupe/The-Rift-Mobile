@@ -1,4 +1,4 @@
-package main.View;
+package main.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,6 @@ import com.example.therift.databinding.LoginActivityBinding;
  */
 public class LoginActivity extends AppCompatActivity {
 
-    private LoginActivityBinding binding;
 
     /**
      * Appelé lors de la création de l'activité. Cette méthode initialise
@@ -28,9 +27,10 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.binding = LoginActivityBinding.inflate(getLayoutInflater());
-        this.setContentView(this.binding.getRoot());
+        LoginActivityBinding binding;
+        binding = LoginActivityBinding.inflate(getLayoutInflater());
+        this.setContentView(binding.getRoot());
 
-        this.binding.btPlay.setOnClickListener((v) -> {startActivity(new Intent(LoginActivity.this, MainActivity.class));} );
+        binding.btPlay.setOnClickListener((view) -> {startActivity(new Intent(LoginActivity.this, MainActivity.class));} );
     }
 }

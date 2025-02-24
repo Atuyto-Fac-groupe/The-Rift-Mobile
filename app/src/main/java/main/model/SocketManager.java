@@ -1,4 +1,4 @@
-package main.Model;
+package main.model;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

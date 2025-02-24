@@ -1,4 +1,4 @@
-package main.View;
+package main.view;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import android.graphics.Color;
-import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -24,11 +23,10 @@ import com.example.therift.databinding.FragmentHistoireBinding;
 import com.example.therift.databinding.QrcodeAskingLayoutBinding;
 import com.google.gson.Gson;
 import main.App;
-import main.Controler.ColorChanger;
-import main.Controler.OnQrCodeScan;
-import main.Model.Message;
-import main.Model.Stories;
-import main.Model.SystemMessage;
+import main.controler.ColorChanger;
+import main.model.Message;
+import main.model.Stories;
+import main.model.SystemMessage;
 import androidx.lifecycle.Observer;
 
 
@@ -256,7 +254,6 @@ public class FragmentHistoire extends Fragment{
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
-//        textLayoutParams.setMargins(20, 20, 20, 10);
         histoireTextView.setLayoutParams(textLayoutParams);
 
         return histoireTextView;
@@ -285,7 +282,6 @@ public class FragmentHistoire extends Fragment{
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
-//        tipsLayoutParams.setMargins(20, 0, 20, 20);
         histoireTipsView.setLayoutParams(tipsLayoutParams);
 
         if (!stories.getNoButton() && !Objects.equals(stories.getHistoireTips(), "")) {
@@ -300,7 +296,6 @@ public class FragmentHistoire extends Fragment{
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
             );
-//            buttonLayoutParams.setMargins(20, 0, 20, 20);
             showTipsButton.setLayoutParams(buttonLayoutParams);
 
         }

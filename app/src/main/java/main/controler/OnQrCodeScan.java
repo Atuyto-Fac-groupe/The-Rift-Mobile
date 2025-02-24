@@ -1,4 +1,4 @@
-package main.Controler;
+package main.controler;
 
 public interface OnQrCodeScan {
 

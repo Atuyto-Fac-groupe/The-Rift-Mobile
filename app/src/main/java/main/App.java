@@ -1,21 +1,18 @@
 package main;
 
 import android.app.Application;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import main.Model.*;
-import main.Model.BDD.ObjectBox;
+import main.model.*;
+import main.model.BDD.ObjectBox;
 import okhttp3.Response;
 import okhttp3.WebSocket;
-import main.Controler.SocketObserver;
+import main.controler.SocketObserver;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;

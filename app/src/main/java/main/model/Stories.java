@@ -1,4 +1,4 @@
-package main.Model;
+package main.model;
 
 
 import android.content.res.Resources;
@@ -6,9 +6,7 @@ import com.example.therift.R;
 import io.objectbox.Box;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
-import io.objectbox.annotation.Transient;
-import main.App;
-import main.Model.BDD.ObjectBox;
+import main.model.BDD.ObjectBox;
 
 import java.util.List;
 

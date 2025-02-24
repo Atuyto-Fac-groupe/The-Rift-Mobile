@@ -1,7 +1,8 @@
-package main.View;
+package main.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.therift.databinding.LoadingActivityBinding;
@@ -40,7 +41,7 @@ public class LoadingActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoadingActivity.this, LoginActivity.class);
                     startActivity(intent);
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    Log.d("Loading", e.getMessage());
                 }
             }
         });

@@ -1,4 +1,4 @@
-package main.Model;
+package main.model;
 
 public enum TypePlayer {
     PLAYER1("Player 1"), PLAYER2("Player 2");

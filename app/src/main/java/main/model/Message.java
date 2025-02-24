@@ -1,4 +1,5 @@
-package main.Model;
+package main.model;
+
 
 public class Message {
 

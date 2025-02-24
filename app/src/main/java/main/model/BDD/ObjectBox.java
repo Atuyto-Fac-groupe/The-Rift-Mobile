@@ -1,11 +1,11 @@
-package main.Model.BDD;
+package main.model.BDD;
 
 import android.content.Context;
 import android.util.Log;
 import com.example.therift.BuildConfig;
 import io.objectbox.BoxStore;
 import io.objectbox.android.Admin;
-import main.Model.MyObjectBox;
+import main.model.MyObjectBox;
 
 public class ObjectBox {
     private static BoxStore store;

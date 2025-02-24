@@ -1,4 +1,4 @@
-package main.Controler;
+package main.controler;
 
 import android.util.Log;
 import android.view.MotionEvent;
@@ -6,18 +6,16 @@ import android.view.View;
 import android.widget.EditText;
 import com.google.gson.Gson;
 import main.App;
-import main.Model.Message;
-import main.View.FragmentMessage;
-import main.View.MainActivity;
+import main.model.Message;
+import main.view.FragmentMessage;
+import main.view.MainActivity;
 
 public class MessageControler implements View.OnTouchListener {
 
     private EditText editText;
-    private Gson gson;
-    private FragmentMessage fragmentMessage;
+    private static Gson gson;
     public MessageControler(EditText editText, FragmentMessage fragmentMessage) {
         this.editText = editText;
-        this.fragmentMessage = fragmentMessage;
         gson = new Gson();
 
         this.updateMessageRead();

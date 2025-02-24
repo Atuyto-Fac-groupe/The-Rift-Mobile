@@ -1,4 +1,4 @@
-package main.View;
+package main.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment;
 import com.example.therift.databinding.FragmentNoteBinding;
 
 import io.objectbox.Box;
-import main.Model.BDD.ObjectBox;
-import main.Model.Notes;
+import main.model.BDD.ObjectBox;
+import main.model.Notes;
 
 import java.util.Objects;
 

@@ -1,16 +1,11 @@
-package main.Controler;
+package main.controler;
 
 import android.widget.FrameLayout;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import com.example.therift.R;
 import com.google.android.material.tabs.TabLayout;
-import main.View.FragmentHistoire;
-import main.View.FragmentMessage;
-import main.View.FragmentNote;
+import main.view.FragmentHistoire;
+import main.view.FragmentMessage;
+import main.view.FragmentNote;
 
 public class TableControler implements TabLayout.OnTabSelectedListener {
 
@@ -44,6 +39,8 @@ public class TableControler implements TabLayout.OnTabSelectedListener {
                         .replace(fragment.getId(), new FragmentMessage())
                         .addToBackStack(fragment.getTransitionName())
                         .commit();
+                break;
+            default:
                 break;
         }
     }

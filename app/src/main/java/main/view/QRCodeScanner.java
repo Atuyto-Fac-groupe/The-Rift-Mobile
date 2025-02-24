@@ -1,17 +1,12 @@
-package main.View;
+package main.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.gson.Gson;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import main.App;
-import main.Model.SystemMessage;
 
 public class QRCodeScanner extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package main.Controler;
+package main.controler;
 
 import android.app.Activity;
 import android.util.Log;
@@ -11,9 +11,9 @@ public class ColorChanger extends TimerTask {
 
 
     private int indexColor;
-    private List<Integer> colors;
-    private FrameLayout frame;
-    private Activity activity;
+    private final List<Integer> colors;
+    private final FrameLayout frame;
+    private final Activity activity;
     private boolean pause;
 
     public ColorChanger(FrameLayout frame, List<Integer> colors, Activity activity) {
@@ -30,7 +30,7 @@ public class ColorChanger extends TimerTask {
             try {
                 Thread.sleep(4000);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                Log.d("ColorChanger", e.getMessage());
             }
             this.pause = false;
             this.indexColor = 0;

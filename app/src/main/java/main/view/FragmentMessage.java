@@ -1,4 +1,4 @@
-package main.View;
+package main.view;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -16,16 +16,14 @@ import com.example.therift.databinding.FragmentMessageBinding;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import main.App;
-import main.Controler.MessageControler;
-import main.Controler.SocketObserver;
-import main.Model.Message;
+import main.controler.MessageControler;
+import main.controler.SocketObserver;
+import main.model.Message;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.Text;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * FragmentMessage représente un fragment pour afficher les messages.
@@ -113,7 +111,7 @@ public class FragmentMessage extends Fragment implements SocketObserver {
             this.getActivity().runOnUiThread(()->{updateMessage(App.player.getMessages());});
 
         } catch (JsonSyntaxException e) {
-            throw new RuntimeException(e);
+            Log.d("Message", e.getMessage());
         }
     }
 

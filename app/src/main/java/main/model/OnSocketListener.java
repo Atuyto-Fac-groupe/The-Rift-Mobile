@@ -1,4 +1,4 @@
-package main.Model;
+package main.model;
 
 public class OnSocketListener extends SocketObservable{
 

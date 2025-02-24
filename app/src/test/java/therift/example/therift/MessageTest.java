@@ -1,6 +1,6 @@
 package therift.example.therift;
 
-import main.Model.Message;
+import main.model.Message;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

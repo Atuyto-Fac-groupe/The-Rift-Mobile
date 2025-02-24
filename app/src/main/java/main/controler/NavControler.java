@@ -1,15 +1,13 @@
-package main.Controler;
+package main.controler;
 
-import android.app.Activity;
 import android.view.View;
 import android.widget.FrameLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.therift.R;
 import com.example.therift.databinding.MainActivityBinding;
-import main.View.FragmentHistoire;
-import main.View.FragmentMessage;
-import main.View.FragmentNote;
-import main.View.MainActivity;
+import main.view.FragmentHistoire;
+import main.view.FragmentMessage;
+import main.view.FragmentNote;
 
 public class NavControler implements View.OnClickListener{
 

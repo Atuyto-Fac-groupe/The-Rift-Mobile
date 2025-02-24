@@ -1,4 +1,4 @@
-package main.Model;
+package main.model;
 
 
 import io.objectbox.annotation.Entity;
