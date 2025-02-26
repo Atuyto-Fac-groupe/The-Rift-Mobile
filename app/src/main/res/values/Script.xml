@@ -16,14 +16,9 @@
 
 
 
-    <string name="Enigma_2">/sequential:red, green, blue, black/</string>
+    <string name="Enigma_2">/picture:enigma2/</string>
 
-    <string name="Enigma_3">Bonjour, \n
-        1 = B \n
-        2 = F \n
-        3 = g \n
-        4 = h \n
-        5 = e \n
+    <string name="Enigma_3">/picture:indice2/
     </string>
 
 
