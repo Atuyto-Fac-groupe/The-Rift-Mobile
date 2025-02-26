@@ -1,5 +1,6 @@
 package main.view;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -99,15 +100,13 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
      * pour l'onglet actuel. Si l'onglet sélectionné n'est pas l'onglet
      * d'index 2, le badge sera défini comme invisible.
      */
+    @SuppressLint("ResourceType")
     public void setBadgeMessageOnRead(){
-//        this.runOnUiThread(() -> {
-//            if (this.binding.tabLayout.getSelectedTabPosition() == 2) {
-//                TabLayout.Tab tab = this.binding.tabLayout.getTabAt(2);
-//                BadgeDrawable badgeDrawable = tab.getOrCreateBadge();
-//                badgeDrawable.setVisible(false);
-//
-//            }
-//        });
+        this.runOnUiThread(() -> {
+            if (this.binding.idFragContainer.getId() == R.layout.fragment_histoire){
+                this.binding.btMessages.setBackgroundColor(R.color.Red);
+            }
+        });
     }
 
     @Override
