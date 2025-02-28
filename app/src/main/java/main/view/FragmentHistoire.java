@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.example.therift.databinding.QrcodeAskingLayoutBinding;
 import com.google.gson.Gson;
 import main.App;
 import main.controler.ColorChanger;
+import main.controler.OnQrCodeScan;
 import main.model.Message;
 import main.model.Stories;
 import main.model.SystemMessage;
@@ -57,7 +59,7 @@ public class FragmentHistoire extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.binding = FragmentHistoireBinding.inflate(getLayoutInflater());
-        Stories.initStories(this.getResources());
+        Stories.initStories(this.getResources(), App.player);
         this.stories = Stories.getStories();
         this.initActivityResultLauncher();
         App.systemMessages.observe(getViewLifecycleOwner(), new Observer<List<SystemMessage>>() {

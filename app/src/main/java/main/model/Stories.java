@@ -2,6 +2,8 @@ package main.model;
 
 
 import android.content.res.Resources;
+import android.util.Log;
+
 import com.example.therift.R;
 import io.objectbox.Box;
 import io.objectbox.annotation.Entity;
@@ -100,14 +102,15 @@ public class Stories {
         this.order = order;
     }
 
-    public static void initStories(Resources resources){
+    public static void initStories(Resources resources, Player player){
         Box<Stories> storiesBox = ObjectBox.get().boxFor(Stories.class);
         storiesBox.removeAll();
-        Stories stories1 = new Stories(resources.getString(R.string.Enigma_1), "", 2);
+        System.out.println(player);
+        String playerName = player.getName();
+        Stories stories1 = new Stories(resources.getString(R.string.Enigma_1).replace("JOUEUR TEL", playerName), "", 2);
         Stories stories2 = new Stories(resources.getString(R.string.Enigma_2), "", 3);
         Stories stories3 = new Stories(resources.getString(R.string.Enigma_3), "", 4);
         storiesBox.put(stories1, stories2, stories3);
-
     }
 
     public static List<Stories> getStories(){
