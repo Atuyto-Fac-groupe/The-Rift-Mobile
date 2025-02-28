@@ -25,16 +25,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97a06b1f-d52b-43e6-9ce9-a588788de743" name="Changes" comment="modification import inutile">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/enigma2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/Script.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/Script.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/main/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/controler/NavControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/main/controler/NavControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/main/view/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/main/view/MainActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=R3CW50CTWNB)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -73,12 +74,12 @@
       </list>
     </option>
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Atuyto-Fac-groupe/The-Rift-Mobile",
-    "accountId": "6881aafb-c2a2-4d15-b632-38985761ec07"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Atuyto-Fac-groupe/The-Rift-Mobile&quot;,
+    &quot;accountId&quot;: &quot;6881aafb-c2a2-4d15-b632-38985761ec07&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -102,7 +103,7 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/alexa/Desktop/persoProject",
+    "last_opened_file_path": "C:/Users/Alexandre/Desktop/Cours UPHF/The-Rift-Serveur",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -183,7 +184,8 @@
       <workItem from="1740467240967" duration="39000" />
       <workItem from="1740494570911" duration="1634000" />
       <workItem from="1740498141281" duration="97000" />
-      <workItem from="1740562319940" duration="743000" />
+      <workItem from="1740562319940" duration="1104000" />
+      <workItem from="1740732398920" duration="2006000" />
     </task>
     <task id="LOCAL-00001" summary="ajout de sonarqube dans gradle">
       <option name="closed" value="true" />
@@ -297,7 +299,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740562682789</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="modification import inutile">
+      <option name="closed" value="true" />
+      <created>1740563077169</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1740563077169</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

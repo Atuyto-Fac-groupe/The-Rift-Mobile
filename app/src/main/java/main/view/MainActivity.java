@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
     private Gson gson;
     private static MainActivity instance;
 
-    private MainActivity() {
+    public MainActivity() {
+        super();
         instance = this;
     }
     /**
@@ -103,8 +104,8 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
     @SuppressLint("ResourceType")
     public void setBadgeMessageOnRead(){
         this.runOnUiThread(() -> {
-            if (this.binding.idFragContainer.getId() == R.layout.fragment_histoire){
-                this.binding.btMessages.setBackgroundColor(R.color.Red);
+            if (this.binding.idFragContainer.getId() != R.layout.fragment_histoire && App.player.getNotSee() > 0){
+                this.binding.btMessages.setColorFilter(getResources().getColor(R.color.Red, getTheme()));
             }
         });
     }
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements SocketObserver {
         } catch (JsonSyntaxException e) {
             App.player.add(message);
         }
-
+        this.setBadgeMessageOnRead();
     }
 
     @Override

@@ -1,8 +1,10 @@
 package main.controler;
 
+import android.graphics.PorterDuff;
 import android.view.View;
 import android.widget.FrameLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import com.example.therift.R;
 import com.example.therift.databinding.MainActivityBinding;
 import main.view.FragmentHistoire;
@@ -42,12 +44,14 @@ public class NavControler implements View.OnClickListener{
                     .replace(fragment.getId(), new FragmentHistoire())
                     .addToBackStack(fragment.getTransitionName())
                     .commit();
+
         }
         if (v.getId() == binding.btMessages.getId()){
             this.resetButton();
             this.binding.tvTitleWindow.setText("MESSAGES");
             this.binding.btMessages.setBackground(this.activity.getDrawable(R.drawable.background_buton_navigation_ative));
             this.binding.btMessages.setImageDrawable(this.activity.getDrawable(R.drawable.ic_message_white));
+            this.binding.btMessages.setColorFilter(ContextCompat.getColor(this.activity, R.color.white), PorterDuff.Mode.SRC_IN);
             this.activity.getSupportFragmentManager().beginTransaction()
                     .replace(fragment.getId(), new FragmentMessage())
                     .addToBackStack(fragment.getTransitionName())
